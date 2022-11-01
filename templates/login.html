@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{%block css%}  
+<link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet">
+{%endblock%}
+{%block title%} Code_Bug ~ Login {%endblock%}
+
+{% block content %}
+<br/><br/><br/><br/><br/>
+
+{% for message in get_flashed_messages() %}    
+	<div class="alert alert-warning alert-dismissible fade show mx-4" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+{% endfor %}
+
+<br/><br/><br/>
+<div class="container" style="display: grid; place-content: center;">
+	<form name ="form" class="form-login" method="POST">
+		<div class="onstart">
+            <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_aKRZfw.json" background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+        </div>
+		<center><h1 class="head1">
+			<svg xmlns="http://www.w3.org/2000/svg" width="28" height="21" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+			<path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+		  	</svg>Login!</h1>
+		</center>
+
+		{{ form.hidden_tag() }}
+		{{ form.username.label(class="custom-label") }}
+		{{ form.username(class="custom-field") }}
+		
+		{{ form.password.label(class="custom-label") }}
+		{{ form.password(class="custom-field") }}
+		<br/>		
+		{{ form.submit(class="custom-button") }}
+		<br/>
+		<p class="bottom">
+			<i class="bi bi-info-circle">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+			<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+			<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+		  	</svg>
+			Dont't have an account?
+			<a class="bottom" href="{{url_for('register')}}">
+			<svg xmlns="http://www.w3.org/2000/svg" width="46" height="20" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+			<path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+			</svg>
+			Register here</i></a>
+		</p>
+	</form>
+</div>
+<br/><br/><br/><br/><br/><br/>
+
+<!--lottie player script-->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+{% endblock %}
+
+{% block scripts %}
+    <!-- JavaScript! -->
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+{%endblock%}

@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+
+{%block css%}  
+<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+{%endblock%}
+
+{%block title%} Code_Bug ^_^ {%endblock%}
+
+{% block content %}
+
+
+<!-- Hero section -->
+<div class="wrapper">
+  <section class="sectionsect">
+    <img id="tig" src="https://assets.codepen.io/2621168/pet3.jpg" class="tiger" alt="Pet Tiger" />
+    <h6 class="head1">P|P |NSTALL ...</h6>
+    <img id="dog" src="https://assets.codepen.io/2621168/pet2.jpg" class="dog" alt="Pet Dog" />
+    <div class="content1">
+      <p class="para"><a class = "linky" href="{{ url_for('python')}}" >PYTHON</a> </p>
+      <p class="para"><a class = "linky" href="{{ url_for('flask')}}">FLASK</a></p>
+      <p class="para"><a class = "linky" href="{{ url_for('database')}}">DATABASE</a></p>
+      <p class="para"><a class = "linky" href="{{ url_for('selenium')}}">SELENIUM</a></p>
+      <p class="para">
+      <form method="POST" action="{{ url_for('search')}}" class="d-flex">
+        {{ form.hidden_tag() }}
+        <input class="para form-control me-2 bg-transparent mt-3 mb-3 py-2"style="font-size: 1.9em;border-style: initial;" type="search" placeholder="SEARCH HERE" aria-label="Search" name="searched"/>
+      </form>
+      </p>
+      <a href="#courses">
+        <p class="para" style="text-underline-position: under ;"><span> &nbsp;VIEW ALL</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="56" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+        </svg></p> 
+      </a>
+    </div>
+    <img id="fish"src="https://assets.codepen.io/2621168/pet1.jpg" class="fish" alt="Pet Fish" />
+  </section>
+  </div>
+</div>
+<br/><br/><br/><br/><br/>
+
+
+<!--Courses section-->
+<section class="page-section text-dark mb-0" style="background: linear-gradient(#ffffff,#f8f9fa);" id="courses">
+  <div class="container">
+      <h2 class="transition2 page-section-heading text-center text-uppercase text-dark mb-4" style="padding:2px; font-weight:300;text-decoration: underline solid black 1.5px ; text-underline-position: under;">Courses</h2><br/><br/><br/>
+   
+    </div>
+  <div class="container" >
+<!-- Photo Grid -->
+<div id= "row01"class="transition2 row"style="justify-content: center;width: 100%;"> 
+  <div id= "col01"class="transition2 column shadow-lg">
+    <a href="/python"><img src="{{ url_for('static', filename='imgs/python.jpg') }}" style="width:100%" alt="..." aria-label="python img"></a>
+    <a href="/selenium"><img src="{{ url_for('static', filename='imgs/selenium.jpg') }}" style="width:100%" alt="..." aria-label="selenium img" /></a>
+  </div>
+    <div id= "col01"class="transition2 column shadow-lg">
+      <a href="/html-css"><img src="{{ url_for('static', filename='imgs/html.jpg') }}" style="width:100%"  alt="..." aria-label="html img" /></a>
+    <a href="/git"><img src="{{ url_for('static', filename='imgs/git.jpg') }}" style="width:100%"  alt="..." aria-label="git img" /></a>
+  </div>
+    <div id= "col01"class="transition2 column shadow-lg">
+      <a href="/django"><img src="{{ url_for('static', filename='imgs/django.jpg') }}" style="width:100%"  alt="..." aria-label="django img" /></a>
+      <a href="/database"><img src="{{ url_for('static', filename='imgs/database.jpg') }}" style="width:100%" alt="..." aria-label="database img" /></a>
+
+  </div>
+  <div id= "col01"class="transition2 column shadow-lg">
+  <a href="/flask"><img src="{{ url_for('static', filename='imgs/flask.jpg') }}"style="width:100%"  alt="..." aria-label="flask img" /></a>
+  <a href="#"><img src="{{ url_for('static', filename='imgs/basic_concepts.webp') }}" style="width:100%"  alt="..." aria-label="basic img" /></a>
+</div>
+</div>
+
+  </div>
+  <br/><br/><br/>
+</section>
+
+
+<!-- About Section-->
+<section class="page-section text-dark mb-0"style="background: linear-gradient(#ffffff,#f8f9fa);" id="about">
+  <div class="container"style="font-size: 100%;">
+      <!-- About Section Heading-->
+      <h2 class="transition3 page-section-heading text-center text-uppercase text-dark mb-0" 
+      style="font-weight:250;text-decoration: underline solid black 2px; text-underline-position: under;">About</h2>
+      <br/>  <br/><br/>  <br/>
+      <!-- About Section Content-->
+      <div class="row"style="font-size: 100%;">
+          <div class="transition3 col-lg-4 ms-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
+          <div class="transition3 col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
+      </div>
+      <!-- About Section Button-->
+      <div class="transition3 text-center mt-4 mb-4"style="font-size: 100%;">
+          <a class="btn btn-xl btn-outline-secondary" href="https://startbootstrap.com/theme/freelancer/">
+              <i class="fa-solid fa-circle-plus fa-beat me-1"></i>
+              JOIN NOW!
+          </a>
+      </div>
+  </div>
+  <br/><br/>
+  <!-- Clients-->
+  <div class="py-1">
+    <div class="container" >
+      <div class="transition3 row align-items-center" style="justify-content: center;">
+        <div class="col-md-3 ">
+          <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
+            src="{{ url_for('static', filename='imgs/microsoft.svg') }}" alt="..." aria-label="Microsoft Logo" /></a>
+        </div>
+        <div class="col-md-2 col-sm-5 ">
+          <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
+              src="{{ url_for('static', filename='imgs/google.svg') }}" alt="..." aria-label="Google Logo" /></a>
+        </div>
+        
+        <div class=" col-md-2 col-sm-5" >
+          <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
+            src="{{ url_for('static', filename='imgs/facebook.svg') }}" alt="..." aria-label="Facebook Logo" /></a>
+        </div>
+        <div class="col-md-2 col-sm-1 " >
+          <a href="#!"><img class="img-fluid img-brand d-block mx-auto" 
+           src="{{ url_for('static', filename='imgs/ibm.svg') }}" alt="..." aria-label="IBM Logo" /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- Contact Section-->
+<section class="page-section " id="contact">
+  <div class="container">
+      <!-- Contact Section Heading-->
+      <h2 class="transition4 page-section-heading text-center text-uppercase text-secondary mb-4"style="font-weight:250; text-decoration: underline solid black 2px; text-underline-position: under;">Contact Me</h2>
+      <br/>  <br/>
+      <!-- Contact Section Form-->
+      <div class="row justify-content-center">
+          <div class="col-lg-8 col-xl-7">
+      
+              <!-- to get an API token!-->
+              <form id="contactForm"style="font-weight:250;" data-sb-form-api-token="API_TOKEN">
+                  <!-- Name input-->
+                  <div class="transition4 form-floating mb-3">
+                      <input class="form-control bg-transparent" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                      <label for="name">Full name</label>
+                  </div>
+                  <!-- Email address input-->
+                  <div class="transition4 form-floating mb-3">
+                      <input class="form-control bg-transparent" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                      <label for="email">Email address</label>
+                      
+                  </div>
+                  <!-- Phone number input-->
+                  <div class="transition4 form-floating mb-3">
+                      <input class="form-control bg-transparent" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                      <label for="phone">Phone number</label>
+                  </div>
+                  <!-- Message input-->
+                  <div class="transition4 form-floating mb-3">
+                      <textarea class="form-control bg-transparent" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                      <label for="message">Message</label>
+                  </div>
+                
+                  <div class="d-none" id="submitSuccessMessage">
+                      <div class="text-center mb-3">
+                          <div class="fw-bolder"><h4>Form submission successful!</h4></div>
+                      </div>
+                  </div>
+                  <!-- Submit error message-->
+                  
+                  <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3"><h3>Error sending message!</h3></div></div>
+                  <!-- Submit Button-->
+                  <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</section>
+
+{%endblock%}
+
+{% block footer %}
+
+<!-- Footer -->
+<footer class="transition5 footer text-center bg-light">
+  <div class="container ">
+      <div class="transition5 row">
+          <!-- Footer Location-->
+          <div class="col-lg-4 mb-5 mb-lg-0">
+              <h4 class="text-dark text-uppercase mb-4">Location</h4>
+              <p class="lead mb-0 text-dark">
+                  India - MAharasthra
+                  <br />
+                  Street-Not telling you..
+              </p>
+          </div>
+          <!-- Footer Social Icons-->
+          <div class="transition5 col-lg-4 mb-5 mb-lg-0">
+              <h4 class="text-uppercase text-dark mb-4">Around the Web</h4>
+              <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+              <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+              <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
+              <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+          </div>
+          <!-- Footer About Text-->
+          <div class="transition5 col-lg-4">
+              <h4 class="text-uppercase text-dark mb-4">About Code_Bug</h4>
+              <p class="lead mb-0 text-dark">
+                  Code_Bug is a free programming website for learners to code and understand concepts!           
+              </p>
+          </div>
+      </div>
+  </div>
+</footer>
+
+{% endblock %}
+
+{% block scripts %}
+
+     <!-- JavaScript! -->
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js" integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>    
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{%block css%}  
+<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+{%endblock%}
+
+{%block title%} Code_Bug ~ Searched {%endblock%}
+<style>
+ body{
+    font-weight:300;
+ }
+</style>
+
+{% block content %}
+
+<br/><br/><br/><br/><br/>
+<h4 style="font-weight: 300;">You Searched For - {{ searched }} </h4><br/>
+
+{% if posts %}
+    {% for post in posts %}
+    <div class="shadow p-3 mb-2 bg-body rounded">
+    <h4 style="font-family:verdana"> {{ post.title }} | {{ post.category }}</h4>
+
+    <small>Posted by: {{ post.poster.name }} on {{ post.date_posted }}</small>
+    <br /><br />
+    <p>{{ post.content|safe }}</p>
+    <br />
+
+    <a href="{{ url_for('post', id=post.id)}}" class="btn btn-outline-secondary btn-sm">View Post</a>
+
+    {% if current_user.id ==7 %}
+
+    <a href="{{ url_for('edit_post', id=post.id)}}" class="btn btn-outline-secondary btn-sm">Edit Post</a>
+
+    {% endif %}
+    <br /><br />
+    </div>
+    <br />
+    {% endfor %}
+{% else %}
+    Your search -  <strong>{{ searched }}</strong> - did not match any documents.
+    <br/><br/>
+    Suggestions:
+    </br>
+    * Make sure that all words are spelled correctly.</br>
+    * Try more general keywords.</br>
+    * Try different keywords.</br>
+    * Try fewer keywords.
+
+    <center>
+    <lottie-player src="https://assets4.lottiefiles.com/private_files/lf30_k6fpeaa5.json"  background="transparent"  speed="1"  style="width: 400px; height: 300px;" hover loop  autoplay></lottie-player>
+    </center>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+{% endif %}
+<br/><br/><br/><br/>
+{% endblock %} 
+
+{% block scripts %}
+           <!-- JavaScript! -->
+     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>      
+{%endblock%}

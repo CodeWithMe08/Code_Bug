@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{%block css%}  
+<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+{%endblock%}
+
+{%block title%} Code_Bug ~ SignUp {%endblock%}
+
+{% block content %}
+<br/><br/><br/>
+
+{% for message in get_flashed_messages() %}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+{% endfor %}
+<br/><br/>
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 10px; box-shadow: 20px 20px 40px rgb(241, 195, 255);border-color: rgb(255, 255, 255);">
+            <div class="card-body p-md-2">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <p class="text-center h1 fw-bold mb-4 mx-1 mx-md-2 mt-4">Sign up</p>
+                <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                    {{ form.name.label(class="form-label") }}
+                    {{ form.name(class="form-control") }}
+                    </div>
+                </div>          
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                    {{ form.username.label(class="form-label") }}
+                    {{ form.username(class="form-control") }}
+                    </div>
+                </div>	
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                    {{ form.email.label(class="form-label") }}
+                    {{ form.email(class="form-control") }}
+                    </div>
+                </div>
+                    <!-- <br/>  
+                    {{ form.favorite_color.label(class="form-label") }}
+                    {{ form.favorite_color(class="form-control") }}
+                    <br/> -->
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">       
+                    {{ form.password_hash.label(class="form-label") }}
+                    {{ form.password_hash(class="form-control") }}      
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">        
+                    {{ form.password_hash2.label(class="form-label") }}
+                    {{ form.password_hash2(class="form-control") }}
+                    </div>
+                </div>
+                <div class="form-check d-flex justify-content-center mb-5">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                <label class="form-check-label" for="form2Example3">
+                    I agree all statements in <a href="#!">Terms of service</a>
+                </label>
+                </div>               
+                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                {{ form.submit(class="btn btn-primary btn-lg") }}
+                </div>
+                </form>
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">        
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                class="img-fluid" alt="Sample image">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<br/><br/><br/><br/><br/>
+{% endblock %}
+
+{% block footer %}
+
+<footer class="transition5 footer text-center bg-light">
+    <div class="container ">
+        <div class="transition5 row">
+            <!-- Footer Location-->
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-dark text-uppercase mb-4">Location</h4>
+                <p class="lead mb-0 text-dark">
+                    India - MAharasthra
+                    <br />
+                    Street-Not telling you..
+                </p>
+            </div>
+            <!-- Footer Social Icons-->
+            <div class="transition5 col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase text-dark mb-4">Around the Web</h4>
+                <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+                <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+            </div>
+            <!-- Footer About Text-->
+            <div class="transition5 col-lg-4">
+                <h4 class="text-uppercase text-dark mb-4">About Code_Bug</h4>
+                <p class="lead mb-0 text-dark">
+                    Code_Bug is a free programming website for learners to code and understand concepts!           
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}
+
+{% block scripts %}
+
+     <!-- JavaScript! -->
+     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        
+{%endblock%}
