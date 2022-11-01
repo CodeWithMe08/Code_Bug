@@ -7,6 +7,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from web_forms import UserForm,PostForm,LoginForm,PasswordForm,SearchForm
 from flask_ckeditor import CKEditor
+from werkzeug.utils import secure_filename
+import uuid as uuid
+import os
 
 # Create a Flask Instance
 app = Flask(__name__)
@@ -22,6 +25,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/user01'
 #app.config['SQLALCHEMY_DATABASE_URI'] = ''
 
 app.config['SECRET_KEY'] = "my super secret key that no one is supposed to know"
+
+UPLOAD_FOLDER = 'static/imgs/'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 # Initialize The Database
 db = SQLAlchemy(app)
@@ -233,14 +240,13 @@ def register():
 		if user is None:
 			# Hash the password!!!
 			hashed_pw = generate_password_hash(form.password_hash.data, 'sha256')
-			user = Users(username=form.username.data, name=form.name.data, email=form.email.data, favorite_color=form.favorite_color.data, password_hash=hashed_pw)
+			user = Users(username=form.username.data, name=form.name.data, email=form.email.data, password_hash=hashed_pw)
 			db.session.add(user)
 			db.session.commit()
 		name = form.name.data
 		form.name.data = ''
 		form.username.data = ''
 		form.email.data = ''
-		form.favorite_color.data = ''
 		form.password_hash.data = ''
 		flash("Registration Completed!")
 	our_users = Users.query.order_by(Users.date_added)
@@ -296,33 +302,102 @@ def admin():
 @app.route('/profile', methods=['GET', 'POST'])
 @login_required
 def profile():
+	return render_template("profile.html")
+
+	"""use this to have update page functionalities in profile page also, will nned to have a form in profile for this to work!"""
+	# form = UserForm()
+	# id = current_user.id
+	# name_to_update = Users.query.get_or_404(id)
+	# if request.method == "POST":
+	# 	name_to_update.name = request.form['name']
+	# 	name_to_update.email = request.form['email']
+	# 	name_to_update.username = request.form['username']
+	# 	name_to_update.about_author = request.form['about_author']
+	# 	name_to_update.profile_pic = request.files['profile_pic']
+	# 	# Grab Image Name
+	# 	pic_filename = secure_filename(name_to_update.profile_pic.filename)
+	# 	# Set UUID
+	# 	pic_name = str(uuid.uuid1()) + "_" + pic_filename
+	# 	# Save That Image
+	# 	saver = request.files['profile_pic']
+		
+	# 	# Change it to a string to save to db
+	# 	name_to_update.profile_pic = pic_name
+	# 	try:
+	# 		db.session.commit()
+	# 		saver.save(os.path.join(app.config['UPLOAD_FOLDER'], pic_name))
+	# 		flash("User Updated Successfully!")
+	# 		return render_template("profile.html", 
+	# 			form=form,
+	# 			name_to_update = name_to_update)
+	# 	except:
+	# 		flash("Error!  Looks like there was a problem...try again!")
+	# 		return render_template("profile.html", 
+	# 			form=form,
+	# 			name_to_update = name_to_update)
+	# else:
+	# 	return render_template("profile.html", 
+	# 			form=form,
+	# 			name_to_update = name_to_update,
+	# 			id = id)
+
+
+# Update User Database Record
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+@login_required
+def update(id):
 	form = UserForm()
-	id = current_user.id
 	name_to_update = Users.query.get_or_404(id)
 	if request.method == "POST":
 		name_to_update.name = request.form['name']
 		name_to_update.email = request.form['email']
 		name_to_update.username = request.form['username']
 		name_to_update.about_author = request.form['about_author']
-		try:
+		# Check for profile pic
+		if request.files['profile_pic']:
+			name_to_update.profile_pic = request.files['profile_pic']
+
+			# Grab Image Name
+			pic_filename = secure_filename(name_to_update.profile_pic.filename)
+			# Set UUID
+			pic_name = str(uuid.uuid1()) + "_" + pic_filename
+			# Save That Image
+			saver = request.files['profile_pic']
+
+
+			# Change it to a string to save to db
+			name_to_update.profile_pic = pic_name
+			try:
+				db.session.commit()
+				saver.save(os.path.join(app.config['UPLOAD_FOLDER'], pic_name))
+				flash("User Updated Successfully!")
+				return render_template("profile.html", 
+					form=form,
+					name_to_update = name_to_update, id=id)
+			except:
+				flash("Error!  Looks like there was a problem...try again!")
+				return render_template("update.html", 
+					form=form,
+					name_to_update = name_to_update)
+		else:
 			db.session.commit()
 			flash("User Updated Successfully!")
 			return render_template("profile.html", 
 				form=form,
-				name_to_update = name_to_update)
-		except:
-			flash("Error!  Looks like there was a problem...try again!")
-			return render_template("profile.html", 
-				form=form,
-				name_to_update = name_to_update)
+				name_to_update = name_to_update, id=id)
+	
 	else:
-	    return render_template("profile.html", form=form,name_to_update = name_to_update,id = id)
+		return render_template("update.html", 
+				form=form,
+				name_to_update = name_to_update,
+				id = id)
 
 
 # Delete user function
 @app.route('/delete/<int:id>')
 @login_required
 def delete(id):
+	# Check logged in id vs. id to delete
 	if id == current_user.id:
 		user_to_delete = Users.query.get_or_404(id)
 		name = None
@@ -344,36 +419,6 @@ def delete(id):
 	else:
 		flash("Sorry, you can't delete that user! ")
 		return redirect(url_for('profile'))
-
-
-# Update User Database Record
-@app.route('/update/<int:id>', methods=['GET', 'POST'])
-@login_required
-def update(id):
-	form = UserForm()
-	name_to_update = Users.query.get_or_404(id)
-	if request.method == "POST":
-		name_to_update.name = request.form['name']
-		name_to_update.email = request.form['email']
-		name_to_update.favorite_color = request.form['favorite_color']
-		name_to_update.username = request.form['username']
-		try:
-			db.session.commit()
-			flash("User Updated Successfully!")
-			return render_template("update.html", 
-				form=form,
-				name_to_update = name_to_update, id=id)
-		except:
-			flash("Error!  Looks like there was a problem...try again!")
-			return render_template("update.html", 
-				form=form,
-				name_to_update = name_to_update,
-				id=id)
-	else:
-		return render_template("update.html", 
-				form=form,
-				name_to_update = name_to_update,
-				id = id)
 
 
 # Custom Error Pages
@@ -436,6 +481,7 @@ class Users(db.Model, UserMixin):
 	email = db.Column(db.String(120), nullable=False, unique=True)
 	about_author = db.Column(db.Text(500), nullable=True)
 	date_added = db.Column(db.DateTime, default=datetime.utcnow)
+	profile_pic = db.Column(db.String(), nullable=True)
 	# Do some password stuff!
 	password_hash = db.Column(db.String(128))
 	# User Can Have Many Posts 

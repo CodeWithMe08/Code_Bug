@@ -38,6 +38,8 @@
         {{ current_user.email }}  <br/>   
         <strong>About Author:</strong>
         {{ current_user.about_author }}<br/>
+        <strong>Profile Pic:</strong>
+        {{ current_user.profile_pic }}<br/>    
         <strong>Date Joined:</strong>
         {{ current_user.date_added }}  <br/>  
     </p>
@@ -47,7 +49,11 @@
         <br/><br/>
         </div>
         <div class="col-4">
-        <img src="{{ url_for('static', filename='imgs/default_profile_pic.png')}}" width="200" align="right">
+          {% if current_user.profile_pic %}
+          <img src="{{ url_for('static', filename='imgs/' + current_user.profile_pic)}}" width="200" align="right">     
+          {% else %}  
+          <img src="{{ url_for('static', filename='imgs/default_profile_pic.png')}}" width="200" align="right">      
+          {% endif %}
         </div>
       </div>
     </div>
