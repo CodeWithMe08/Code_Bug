@@ -21,13 +21,32 @@
     <small> By: {{ post.poster.name }}<br/>{{ post.date_posted }}</small>
     <br/><br/>
 	  {{ post.content|safe }}<br/><br/>
-
-    {% if post.poster.about_author %}
-
-		{{ post.poster.about_author }}
-
-	  {% endif %}
-    
+	
+	<!-- <div class="card mb-3">
+		<div class="row no-gutters">
+			<div class="col-md-2">
+				{% if post.poster.profile_pic %}
+					<img src="{{ url_for('static', filename='imgs/' + post.poster.profile_pic)}}" class="rounded-circle" height="35"width="35"alt="profile pic"loading="lazy">
+				{% else %}
+					<img src="{{ url_for('static', filename='imgs/default_profile_pic.png')}}" class="rounded-circle" height="35"width="35"alt="profile pic"loading="lazy">
+				{% endif %}
+			</div>
+			<div class="col-md-10">
+				<div class="card-body">
+					<h5 class="card-title">
+						{{ post.poster.name }}			
+					</h5>
+					<p class="card-text">
+						{% if post.poster.about_author %}
+							{{ post.poster.about_author }}
+						{% else %}
+							Author has no about profile yet...
+						{% endif %}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div> -->
   </div>
 
   {% if  current_user.id == 7 %}

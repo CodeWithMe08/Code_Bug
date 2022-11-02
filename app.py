@@ -227,7 +227,7 @@ def edit_post(id):
 	else:
 		flash("You Aren't Authorized To Edit This Post...")
 		posts = Posts.query.order_by(Posts.date_posted)
-		return render_template("posts.html", posts=posts)
+		return redirect(url_for('post', id=post.id))
 
 
 # Registration
@@ -266,7 +266,7 @@ def login():
 			# Check the hash
 			if check_password_hash(user.password_hash, form.password.data):
 				login_user(user)
-				flash("Login Succesfull!!")
+				flash("Login Successfull!!")
 				return redirect(url_for('index'))
 			else:
 				flash("Wrong Password - Try Again!")
@@ -479,7 +479,7 @@ class Users(db.Model, UserMixin):
 	username = db.Column(db.String(20), nullable=False, unique=True)
 	name = db.Column(db.String(200), nullable=False)
 	email = db.Column(db.String(120), nullable=False, unique=True)
-	about_author = db.Column(db.Text(500), nullable=True)
+	about_author = db.Column(db.Text(), nullable=True)
 	date_added = db.Column(db.DateTime, default=datetime.utcnow)
 	profile_pic = db.Column(db.String(), nullable=True)
 	# Do some password stuff!

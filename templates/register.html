@@ -10,8 +10,15 @@
 <br/><br/><br/>
 
 {% for message in get_flashed_messages() %}
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-	  {{ message }}
+	<div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
+	  {{ message }} 
+      <svg width="258" height="8" viewBox="0 0 298 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M257.354 4.35355C257.549 4.15829 257.549 3.84171 257.354 3.64645L254.172 0.464466C253.976 0.269204 253.66 0.269204 253.464 0.464466C253.269 0.659728 253.269 0.976311 253.464 1.17157L256.293 4L253.464 6.82843C253.269 7.02369 253.269 7.34027 253.464 7.53553C253.66 7.7308 253.976 7.7308 254.172 7.53553L257.354 4.35355ZM0 4.5H257V3.5H0V4.5Z"
+          fill="black" />
+      </svg>
+      <a href="/login">Login here</a>
+    
 	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
 {% endfor %}
@@ -61,16 +68,23 @@
                     {{ form.password_hash2.label(class="form-label") }}
                     {{ form.password_hash2(class="form-control") }}
                     </div>
-                </div>
-                <div class="form-check d-flex justify-content-center mb-5">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
-                <label class="form-check-label" for="form2Example3">
-                    I agree all statements in <a href="#!">Terms of service</a>
-                </label>
-                </div>               
+                </div>          
                 <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                 {{ form.submit(class="btn btn-primary btn-lg") }}
                 </div>
+                <center><p class="bottom">
+                    <i class="bi bi-info-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                    </svg>
+                    Already have an account?
+                    <a class="bottom" href="{{url_for('login')}}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="20" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                    </svg>
+                    Login here</i></a>
+                </p></center>
                 </form>
                 </div>
                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">        
