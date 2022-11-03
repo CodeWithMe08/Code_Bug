@@ -156,7 +156,7 @@ def search():
 @app.route('/add-post', methods=['GET', 'POST'])
 #@login_required
 def add_post():
-    #if current_user.id == 7:
+    #if current_user.id == 8:
     form = PostForm()
     if form.validate_on_submit():
         poster = current_user.id
@@ -181,7 +181,7 @@ def add_post():
 def delete_post(id):
 	post_to_delete = Posts.query.get_or_404(id)
 	id = current_user.id
-	if id == 7:
+	if id == 8:
 		try:
 			db.session.delete(post_to_delete)
 			db.session.commit()
@@ -220,7 +220,7 @@ def edit_post(id):
 		db.session.commit()
 		flash("Post Has Been Updated!")
 		return redirect(url_for('post', id=post.id))
-	if current_user.id == 7:
+	if current_user.id == 8:
 		form.title.data = post.title
 		#form.author.data = post.author
 		form.category.data = post.category
@@ -291,7 +291,7 @@ def logout():
 @login_required
 def admin():
     id = current_user.id
-    if id == 7:
+    if id == 8:
         posts = Posts.query.order_by(Posts.date_posted)
         our_users = Users.query.order_by(Users.date_added)
         return render_template("admin.html", posts=posts, our_users=our_users)

@@ -28,7 +28,7 @@
           <!-- <li class="nav-item">
             <a class="nav-link" href="{{ url_for('posts')}}">New Posts</a>
           </li> -->
-          {% if current_user.id == 7 %}
+          {% if current_user.id == 8 %}
           <li class="nav-item">
             <a class="nav-link text-dark" href="{{ url_for('admin')}}">Admin</a>
           </li>
@@ -36,7 +36,7 @@
         <form method="POST" action="{{ url_for('search')}}" class="d-flex">
           {{ form.hidden_tag() }}
           <input class="form-control me-2"style="background: transparent;border-color: transparent;"type="search"
-            placeholder='🔍SEARCH'aria-label="Search"name="searched"/>
+            placeholder='SEARCH'aria-label="Search"name="searched"/>
         </form>
       
           {% if current_user.is_authenticated %}
