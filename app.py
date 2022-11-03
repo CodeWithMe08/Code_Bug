@@ -20,9 +20,11 @@ ckeditor = CKEditor(app)
 # SQLite DB
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 # MySQL DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/user01'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/user01'
 # postgres DB
-#app.config['SQLALCHEMY_DATABASE_URI'] = ''
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://qkxekuvvimyqpb:12dbcc3846e4ba7a5c1fa5075ffb93858da3c9ddd73b7c92b9fc7881a159df13@ec2-54-82-205-3.compute-1.amazonaws.com:5432/d7n991c1t52bl5'
+
+'HEROKU_POSTGRESQL_COPPER_URL: postgres://jzldlnekuhbmgt:caf9e6167ea4ac83232fcb9c2b7cc6dd81c48aba2e5249e119e5f8f5cb5b3d71@ec2-44-209-57-4.compute-1.amazonaws.com:5432/d3okvj96ue674l'
 
 app.config['SECRET_KEY'] = "my super secret key that no one is supposed to know"
 
