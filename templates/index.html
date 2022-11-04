@@ -12,13 +12,13 @@
 <div class="wrapper">
   <section class="sectionsect">
     <img id="tig" src="https://assets.codepen.io/2621168/pet3.jpg" class="tiger" alt="Pet Tiger" />
-    <h6 class="head1">P|P |NSTALL ...</h6>
+    <h6 class="head1">P|P |NSTALL</h6>
     <img id="dog" src="https://assets.codepen.io/2621168/pet2.jpg" class="dog" alt="Pet Dog" />
     <div class="content1">
-      <p class="para"><a class = "linky" href="{{ url_for('python')}}" >PYTHON</a> </p>
-      <p class="para"><a class = "linky" href="{{ url_for('flask')}}">FLASK</a></p>
-      <p class="para"><a class = "linky" href="{{ url_for('database')}}">DATABASE</a></p>
-      <p class="para"><a class = "linky" href="{{ url_for('selenium')}}">SELENIUM</a></p>
+      <a class = "linky" href="{{ url_for('python')}}" >PYTHON</a>
+      <a class = "linky" href="{{ url_for('flask')}}">FLASK</a>
+      <a class = "linky" href="{{ url_for('database')}}">DATABASE</a>
+      <a class = "linky" href="{{ url_for('selenium')}}">SELENIUM</a>
       
       <form method="POST" action="{{ url_for('search')}}" class="d-flex para">
         {{ form.hidden_tag() }}
@@ -49,7 +49,7 @@
 <!-- Photo Grid -->
 <div id= "row01"class="transition2 row"style="justify-content: center;width: 100%;"> 
   <div id= "col01"class="transition2 column shadow-lg">
-    <a href="/python"><img src="{{ url_for('static', filename='imgs/python.jpg') }}" style="width:100%" alt="..." aria-label="python img"></a>
+    <a href="/python"><img src="{{ url_for('static', filename='imgs/python1.jpg') }}" style="width:100%" alt="..." aria-label="python img"></a>
     <a href="/selenium"><img src="{{ url_for('static', filename='imgs/selenium.jpg') }}" style="width:100%" alt="..." aria-label="selenium img" /></a>
   </div>
     <div id= "col01"class="transition2 column shadow-lg">
@@ -58,12 +58,12 @@
   </div>
     <div id= "col01"class="transition2 column shadow-lg">
       <a href="/django"><img src="{{ url_for('static', filename='imgs/django.jpg') }}" style="width:100%"  alt="..." aria-label="django img" /></a>
-      <a href="/database"><img src="{{ url_for('static', filename='imgs/database.jpg') }}" style="width:100%" alt="..." aria-label="database img" /></a>
+      <a href="/database"><img src="{{ url_for('static', filename='imgs/database3.jpg') }}" style="width:100%" alt="..." aria-label="database img" /></a>
 
   </div>
   <div id= "col01"class="transition2 column shadow-lg">
-  <a href="/flask"><img src="{{ url_for('static', filename='imgs/flask.jpg') }}"style="width:100%"  alt="..." aria-label="flask img" /></a>
-  <a href="#"><img src="{{ url_for('static', filename='imgs/basic_concepts.webp') }}" style="width:100%"  alt="..." aria-label="basic img" /></a>
+  <a href="/flask"><img src="{{ url_for('static', filename='imgs/flask1.png') }}"style="width:100%"  alt="..." aria-label="flask img" /></a>
+  <a href="#"><img src="{{ url_for('static', filename='imgs/basic.jpg') }}" style="width:100%"  alt="..." aria-label="basic img" /></a>
 </div>
 </div>
 

@@ -29,7 +29,7 @@
 	 {{ post.date_posted }}
 	</small> 
 	<br/><br/>
-	{{ post.content|safe }}
+	{{ post.content[0:300]|safe }}
 	<br/><br/>
 	<a href="{{ url_for('post', id=post.id)}}" class="btn btn-outline-dark btn-sm">View Post</a>
 

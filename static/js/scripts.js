@@ -54,15 +54,15 @@ var tl = gsap.timeline();
 tl.from('.wrapper', {
     y: '-200%',
     opacity: 0,
-    duration: 1,
+    duration: 0.5,
     ease: Power4.easeOut
 })
-tl.from('.para', {
+tl.from('.linky', {
     opacity: 0,
     y: -50,
     stagger: .3,
     ease: Power4.easeOut,
-    duration: 1.3
+    duration: 1
 }, "-=1.5")
 
 gsap.from(".transition2", {
@@ -72,7 +72,7 @@ gsap.from(".transition2", {
     },
     y: 100,
     opacity: 0,
-    duration: 1.1,
+    duration: 0.5,
     stagger: .3
 })
 

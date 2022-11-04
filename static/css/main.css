@@ -91,7 +91,7 @@ body {
   background: #f1efe9;
   height: 250px auto;
   margin-top: 15em;
-  padding: 1em;
+  padding: 0.5em;
   margin-left: 7em;
 
   display: grid;
@@ -99,12 +99,11 @@ body {
     "tiger header header"
     "tiger dog content"
     "fish dog content";
-  gap: 2em;
+  gap: 1em;
   grid-template-columns: repeat(2, 1fr) 2fr;
-  grid-template-rows: auto 1fr 100px;
+  grid-template-rows: auto 1fr 50px;
   position: relative;
 }
-
 .sectionsect:before {
   position: absolute;
   content: "VENV";
@@ -114,6 +113,85 @@ body {
   font-size: 15rem;
   top: -150px;
   left: -295px;
+}
+.head1 {
+  font-size: 5rem;
+  font-weight: 200;
+  margin: 0;
+  line-height: 1em;
+  font-family: "Montserrat", sans-serif;
+}
+@media screen and (max-width: 1080px) {
+
+  .sectionsect {
+
+    background: #f1efe9;
+    height: 250px auto;
+    margin-top: 15em;
+    padding: 0.5em;
+    display: grid;
+    width:fit-content;
+    gap: 1em;
+    grid-template-columns: repeat(2, 1fr) 2fr;
+    grid-template-rows: auto 1fr 100px;
+    position: relative;
+  }
+
+  .wrapper {
+    width: 500px;
+    margin: 0 auto;
+    line-height: normal;
+  }
+
+}
+@media screen and (max-width: 535px) {
+
+  .sectionsect {
+
+    background: #f1efe9;
+    height: 250px auto;
+    margin-top: 15em;
+    padding: 0.5em;
+    display: grid;
+    width: min-content;
+    gap: 1em;
+    grid-template-columns: repeat(2, 1fr) 2fr;
+    grid-template-rows: auto 1fr 50px;
+    position: relative;
+    right: 80px;
+  }
+
+  .wrapper {
+    width: auto;
+    margin: 0 auto;
+    line-height: normal;
+  }
+
+  .sectionsect:before {
+    position: absolute;
+    content: "VENV";
+    font-weight: 300;
+    font-family: "Montserrat", sans-serif;
+    z-index: -1;
+    font-size: 3rem;
+    top: -150px;
+    left: auto;
+}
+
+.head1 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.content1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+
 }
 
 .tiger {
@@ -157,13 +235,7 @@ body {
   aspect-ratio: 1/1;
 }
 
-.head1 {
-  font-size: 5rem;
-  font-weight: 200;
-  margin: 0;
-  line-height: 1em;
-  font-family: "Montserrat", sans-serif;
-}
+
 
 .para,
 .linky {
@@ -179,7 +251,6 @@ body {
 .linky {
   text-decoration: none;
   color: black;
-  display: flex;
   align-items: center;
   gap: 1em;
   font-family: "Montserrat", sans-serif;
