@@ -18,7 +18,7 @@
 
 <br/><br/><br/>
 <div class="container" style="display: grid; place-content: center;">
-	<form name ="form" class="form-login" method="POST">
+	<form name ="form" class="transition3 form-login shadow" method="POST">
 		<div class="onstart">
             <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_aKRZfw.json" background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
         </div>
@@ -29,14 +29,22 @@
 		</center>
 
 		{{ form.hidden_tag() }}
+
 		{{ form.username.label(class="custom-label") }}
 		{{ form.username(class="custom-field") }}
-		
+
 		{{ form.password.label(class="custom-label") }}
 		{{ form.password(class="custom-field") }}
-		<br/>		
+		<br/>
+		
+		<!-- <div class="form-check">
+			<input type="checkbox" class="form-check-input" id="anime" name="hobby" />
+			<label class="form-check-label" for="anime">Remember me</label>
+		  </div> -->
+
 		{{ form.submit(class="custom-button") }}
 		<br/>
+
 		<p class="bottom">
 			<i class="bi bi-info-circle">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">

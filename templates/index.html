@@ -11,28 +11,29 @@
 <!-- Hero section -->
 <div class="wrapper">
   <section class="sectionsect">
-    <img id="tig" src="https://assets.codepen.io/2621168/pet3.jpg" class="tiger" alt="Pet Tiger" />
+    <img id="poster1" src="{{ url_for('static', filename='imgs/study.webp') }}" class="poster1" alt="study img" />
     <h6 class="head1">P|P |NSTALL</h6>
-    <img id="dog" src="https://assets.codepen.io/2621168/pet2.jpg" class="dog" alt="Pet Dog" />
+    
+    <img id="poster2" src="{{ url_for('static', filename='imgs/study2.jpg') }}"  class="poster2" alt="collaborate img" />
     <div class="content1">
       <a class = "linky" href="{{ url_for('python')}}" >PYTHON</a>
       <a class = "linky" href="{{ url_for('flask')}}">FLASK</a>
       <a class = "linky" href="{{ url_for('database')}}">DATABASE</a>
       <a class = "linky" href="{{ url_for('selenium')}}">SELENIUM</a>
       
-      <form method="POST" action="{{ url_for('search')}}" class="d-flex para">
+      <form method="POST" action="{{ url_for('search')}}" class="d-flex linky">
         {{ form.hidden_tag() }}
-        <input class="para form-control me-2 bg-transparent mt-3 mb-3 py-2"style="font-size: 1em;border-style: initial; padding-left: inherit;" type="search" placeholder="SEARCH HERE" aria-label="Search" name="searched"/>
+        <input class="linky form-control me-2 bg-transparent mt-3 mb-3 py-2"style="font-size: 1em;border-style: initial; padding-left: inherit;" type="search" placeholder="SEARCH HERE" aria-label="Search" name="searched"/>
       </form>
       
       <a href="#courses">
-        <p class="para" style="text-underline-position: under ;"><span> &nbsp;VIEW ALL</span>
+        <p class="linky" style="text-underline-position: under ;"><span>VIEW ALL</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="56" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
         </svg></p> 
       </a>
     </div>
-    <img id="fish"src="https://assets.codepen.io/2621168/pet1.jpg" class="fish" alt="Pet Fish" />
+    <img id="poster3"src="{{ url_for('static', filename='imgs/fish.webp') }}"  class="poster3" alt="Pet Fish" />
   </section>
   </div>
 </div>
@@ -212,8 +213,6 @@
 {% block scripts %}
 
      <!-- JavaScript! -->
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js" integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>    
     

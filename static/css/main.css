@@ -96,9 +96,9 @@ body {
 
   display: grid;
   grid-template-areas:
-    "tiger header header"
-    "tiger dog content"
-    "fish dog content";
+    "poster1 header header"
+    "poster1 poster2 content"
+    "poster3 poster2 content";
   gap: 1em;
   grid-template-columns: repeat(2, 1fr) 2fr;
   grid-template-rows: auto 1fr 50px;
@@ -121,6 +121,59 @@ body {
   line-height: 1em;
   font-family: "Montserrat", sans-serif;
 }
+.poster1 {
+  grid-area: poster1;
+}
+.head1 {
+  font-family: "Montserrat", sans-serif;
+  grid-area: header;
+}
+.poster2 {
+  grid-area: poster2;
+}
+.content1 {
+  grid-area: content;
+}
+.poster3 {
+  grid-area: poster3;
+}
+#poster1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+#poster2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+#poster3 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+
+.linky {
+  font-size: 2.2rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.linky {
+  text-decoration: none;
+  color: black;
+  align-items: center;
+  gap: 1em;
+  font-family: "Montserrat", sans-serif;
+}
+
+.content1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 @media screen and (max-width: 1080px) {
 
   .sectionsect {
@@ -142,12 +195,37 @@ body {
     margin: 0 auto;
     line-height: normal;
   }
-
+    
+  .sectionsect:after {
+    position: absolute;
+    content: "From . import .";
+    font-weight: 400;
+    font-family: "Montserrat", sans-serif;
+    z-index: auto;
+    font-size: 10rem;
+    top: 80px;
+    right:300px;
+    color: rgba(119, 136, 153, 0.153);
+    rotate: 90deg;
+}
+#poster1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  display: none;
+}
+#poster3 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  display: none;
+}
 }
 @media screen and (max-width: 535px) {
 
   .sectionsect {
-
     background: #f1efe9;
     height: 250px auto;
     margin-top: 15em;
@@ -170,97 +248,42 @@ body {
   .sectionsect:before {
     position: absolute;
     content: "VENV";
-    font-weight: 300;
+    font-weight: 400;
     font-family: "Montserrat", sans-serif;
-    z-index: -1;
-    font-size: 3rem;
-    top: -150px;
-    left: auto;
+    z-index: auto;
+    font-size: 15rem;
+    top: 0px;
+    left: px;
+    /* right: -253px; */
+    color: rgba(119, 136, 153, 0.153);
+    rotate: 90deg;
 }
-
 .head1 {
-  font-size: 2rem;
-  font-weight: 300;
+  font-size: 3rem;
+  font-weight: 500;
   margin: 0;
   font-family: "Montserrat", sans-serif;
+  color: rgb(90, 90, 90);
+  text-shadow: #000;
 }
 
 .content1 {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  
-}
-
-}
-
-.tiger {
-  grid-area: tiger;
-}
-
-.head1 {
-  font-family: "Montserrat", sans-serif;
-  grid-area: header;
-}
-
-.dog {
-  grid-area: dog;
-}
-
-.content1 {
-  grid-area: content;
-}
-
-.fish {
-  grid-area: fish;
-}
-
-#tig {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  aspect-ratio: 1/1;
-}
-
-#dog {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  aspect-ratio: 1/1;
-}
-#fish {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  aspect-ratio: 1/1;
-}
-
-
-
-.para,
-.linky {
-  font-size: 2.2rem;
-  font-family: "Montserrat", sans-serif;
-}
-
-.para {
-  margin: 0;
-  font-family: "Montserrat", sans-serif;
+  z-index: 1;
+  align-items: self-start;
 }
 
 .linky {
   text-decoration: none;
   color: black;
   align-items: center;
-  gap: 1em;
+  gap: 0.5em;
   font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+}
 }
 
-.content1 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 /* courses section */
 
 #row01 {

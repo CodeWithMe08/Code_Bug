@@ -86,8 +86,7 @@ body {
 
 .form-login {
   max-width: 500px;
-  background: #fffefe;
-  box-shadow: 20px 20px 40px rgb(241, 195, 255);
+  background: hsl(0, 0%, 100%);
   border-radius: 1em;
   padding: 1em;
   position: relative;
@@ -102,20 +101,30 @@ body {
   font-weight: 400;
 }
 
+.custom-field,.custom-button  {
+  border-radius: 0.3em;
+}
+
+p {
+  font-size: 0.9em;
+}
+a{
+  color: #17bedb;
+}
 .custom-label {
   display: block;
   margin-bottom: 0.3em;
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-weight: 350;
+  
 }
 
 .custom-field {
   width: 100%;
   padding: 0.5em;
   margin-top: 0em;
-  border: 1px solid gray;
+  border: 0.5px solid gray;
   margin-bottom: 0em;
-  cursor: pointer;
 }
 
 .custom-button {
@@ -125,7 +134,7 @@ body {
   text-decoration: none;
   padding: 1em;
   text-align: center;
-  border: var(--bs-pink);
+  border: purple;
 }
 .custom-field, .custom-button {
   border-radius: 0.3em;
@@ -135,6 +144,7 @@ body {
   top: -90px;
   left: -35px;
 }
+
 /* end of custom css */
 
 

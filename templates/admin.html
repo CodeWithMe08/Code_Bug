@@ -19,8 +19,8 @@
 <h3> Post HIstory </h3></center>	
 <br/>
 
-<table class="table">
-    <thead class="table-dark">
+<table class="transition3 table">
+    <thead class="transition3 table-dark">
         <tr>    
         <th scope="col">Title</th>
         <th scope="col">Category</th>
@@ -34,7 +34,7 @@
     <tbody>
     {% for post in posts %}
     
-    <tr class="table-light">	
+    <tr class="transition3 table-light">	
 		<td>{{ post.title }}</td>
 		<td>{{ post.category }}</td>
         <td>{{ post.date_posted }}</td>	 
@@ -56,8 +56,8 @@
 <center><h3> Users List</h3></center>
 <br/>
 
-<table class="table">
-    <thead class="table-dark">
+<table class="transition4 table">
+    <thead class="transition4 table-dark">
     <tr>    
     <th scope="col">Id</th>
     <th scope="col">Name</th>
@@ -68,8 +68,9 @@
     </thead>
     <tbody>
     {% for our_user in our_users %}
-	<tr class="table-light">
-        <td class="table-light">{{ our_user.id }} </td>
+	<tr class="transition4 table-light">
+        <td class="transition4 table-light">
+            {{ our_user.id }} </td>
         <td> {{ our_user.name }}</td>
         <td> {{our_user.username }} </td>
         <td> {{ our_user.email }} </td>

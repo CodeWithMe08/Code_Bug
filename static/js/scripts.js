@@ -62,7 +62,7 @@ tl.from('.linky', {
     y: -50,
     stagger: .3,
     ease: Power4.easeOut,
-    duration: 1
+    duration: 1.3
 }, "-=1.5")
 
 gsap.from(".transition2", {
@@ -99,11 +99,11 @@ gsap.from(".transition4", {
 gsap.from(".transition5", {
     scrollTrigger: {
         trigger: ".transition5",
-        start: "bottom center"
+        start: "center bottom"
     },
-    y: '-150%',
+    y: 100,
     opacity: 0,
-    duration: 0.5,
+    duration: 1,
     stagger: .3
 });
 
