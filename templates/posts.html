@@ -29,8 +29,10 @@
 	 {{ post.date_posted }}
 	</small> 
 	<br/><br/>
-	{{ post.content[0:500]|safe }}..
-	<br/><br/>
+		
+	{{ cont|safe }}..
+
+	<br/><br/><br/>
 	<a href="{{ url_for('post', id=post.id)}}" class="btn btn-outline-dark btn-sm">View Post</a>
 
 	{% if  current_user.id == 8 %}	
@@ -51,6 +53,10 @@
 
 <br/><br/><br/><br/><br/><br/><br/>
 <br/><br/><br/><br/>
+{% endblock %}
+
+{% block footer %}
+	
 {% endblock %}
 
 {% block scripts %}

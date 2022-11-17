@@ -17,9 +17,9 @@
     <img id="poster2" src="{{ url_for('static', filename='imgs/study2.jpg') }}"  class="poster2" alt="collaborate img" />
     <div class="content1">
       <a class = "linky" href="{{ url_for('python')}}" >PYTHON</a>
-      <a class = "linky" href="{{ url_for('flask')}}">FLASK</a>
       <a class = "linky" href="{{ url_for('database')}}">DATABASE</a>
-      <a class = "linky" href="{{ url_for('selenium')}}">SELENIUM</a>
+      <a class = "linky" href="{{ url_for('automation')}}">AUTOMATION</a>
+      <a class = "linky" href="{{ url_for('web_framework')}}">WEB_FRAMEWORK</a>
       
       <form method="POST" action="{{ url_for('search')}}" class="d-flex linky">
         {{ form.hidden_tag() }}
@@ -43,33 +43,32 @@
 <!--Courses section-->
 <section class="page-section text-dark mb-0" style="background: linear-gradient(#ffffff,#f8f9fa);" id="courses">
   <div class="container">
-      <h2 class="transition2 page-section-heading text-center text-uppercase text-dark mb-4" style="padding:2px; font-weight:300;text-decoration: underline solid black 1.5px ; text-underline-position: under;">Courses</h2><br/><br/><br/>
-   
-    </div>
-  <div class="container" >
+      <h2 class="transition2 page-section-heading text-center text-uppercase text-dark mb-4" style="padding:2px; font-weight:300;text-decoration: underline solid black 1.5px ; text-underline-position: under;">Courses</h2>
+      <br/><br/><br/>
+  </div>
+<div class="container" >
 <!-- Photo Grid -->
 <div id= "row01"class="transition2 row"style="justify-content: center;width: 100%;"> 
   <div id= "col01"class="transition2 column shadow-lg">
     <a href="/python"><img src="{{ url_for('static', filename='imgs/python1.jpg') }}" style="width:100%" alt="..." aria-label="python img"></a>
-    <a href="/selenium"><img src="{{ url_for('static', filename='imgs/selenium.jpg') }}" style="width:100%" alt="..." aria-label="selenium img" /></a>
+    <a href="/automation"><img src="{{ url_for('static', filename='imgs/selenium.jpg') }}" style="width:100%" alt="..." aria-label="selenium img" /></a>
   </div>
     <div id= "col01"class="transition2 column shadow-lg">
-      <a href="/html-css"><img src="{{ url_for('static', filename='imgs/html.jpg') }}" style="width:100%"  alt="..." aria-label="html img" /></a>
+      <a href="/html"><img src="{{ url_for('static', filename='imgs/html.jpg') }}" style="width:100%"  alt="..." aria-label="html img" /></a>
     <a href="/git"><img src="{{ url_for('static', filename='imgs/git.jpg') }}" style="width:100%"  alt="..." aria-label="git img" /></a>
   </div>
     <div id= "col01"class="transition2 column shadow-lg">
-      <a href="/django"><img src="{{ url_for('static', filename='imgs/django.jpg') }}" style="width:100%"  alt="..." aria-label="django img" /></a>
+      <a href="/web_framework"><img src="{{ url_for('static', filename='imgs/django.jpg') }}" style="width:100%"  alt="..." aria-label="django img" /></a>
       <a href="/database"><img src="{{ url_for('static', filename='imgs/database3.jpg') }}" style="width:100%" alt="..." aria-label="database img" /></a>
-
   </div>
   <div id= "col01"class="transition2 column shadow-lg">
-  <a href="/flask"><img src="{{ url_for('static', filename='imgs/flask1.png') }}"style="width:100%"  alt="..." aria-label="flask img" /></a>
-  <a href="#"><img src="{{ url_for('static', filename='imgs/basic.jpg') }}" style="width:100%"  alt="..." aria-label="basic img" /></a>
-</div>
+  <a href="/basic"><img src="{{ url_for('static', filename='imgs/flask1.png') }}"style="width:100%"  alt="..." aria-label="flask img" /></a>
+  <a href="/problem_solving"><img src="{{ url_for('static', filename='imgs/basic.jpg') }}" style="width:100%"  alt="..." aria-label="basic img" /></a>
+  </div>
 </div>
 
-  </div>
-  <br/><br/><br/>
+</div>
+<br/><br/><br/>
 </section>
 
 
@@ -82,8 +81,8 @@
       <br/>  <br/><br/>  <br/>
       <!-- About Section Content-->
       <div class="row"style="font-size: 100%;">
-          <div class="transition3 col-lg-4 ms-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
-          <div class="transition3 col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
+          <div class="transition3 col-lg-4 ms-auto"><p class="lead">This blog focus is to cover not only maximum questions but also materialised content for interview related questions which are not easily availiable on the internet, specially complicated questions and experience based questions and to make them availiable to you all, is the sole purpose of Code_bug!</p></div>
+          <div class="transition3 col-lg-4 me-auto"><p class="lead">All the questions are answered specifically to its question, with proper resources and easy asscessibility! Note that none of the content is defined by me, but reither referenced through paid courses, interviews, w3school, geekforgeek and from documentation of each particular courses.</p></div>
       </div>
       <!-- About Section Button-->
       <div class="transition3 text-center mt-4 mb-4"style="font-size: 100%;">
@@ -173,42 +172,6 @@
 </section>
 
 {%endblock%}
-
-{% block footer %}
-
-<!-- Footer -->
-<footer class="transition5 footer text-center bg-light">
-  <div class="container ">
-      <div class="transition5 row">
-          <!-- Footer Location-->
-          <div class="col-lg-4 mb-5 mb-lg-0">
-              <h4 class="text-dark text-uppercase mb-4">Location</h4>
-              <p class="lead mb-0 text-dark">
-                  India - MAharasthra
-                  <br />
-                  Street-Not telling you..
-              </p>
-          </div>
-          <!-- Footer Social Icons-->
-          <div class="transition5 col-lg-4 mb-5 mb-lg-0">
-              <h4 class="text-uppercase text-dark mb-4">Around the Web</h4>
-              <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-              <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-              <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-              <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
-          </div>
-          <!-- Footer About Text-->
-          <div class="transition5 col-lg-4">
-              <h4 class="text-uppercase text-dark mb-4">About Code_Bug</h4>
-              <p class="lead mb-0 text-dark">
-                  Code_Bug is a free programming website for learners to code and understand concepts!           
-              </p>
-          </div>
-      </div>
-  </div>
-</footer>
-
-{% endblock %}
 
 {% block scripts %}
 

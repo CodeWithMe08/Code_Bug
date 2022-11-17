@@ -23,7 +23,7 @@
 
     <small> {{ post.category }} | {{ post.date_posted }}</small>
     <br /><br />
-    <p>{{ post.content|safe }}</p>
+    <p>{{ post.content[0:500]|safe }}</p>
     <br />
 
     <a href="{{ url_for('post', id=post.id)}}" class="btn btn-outline-secondary btn-sm">View Post</a>
@@ -56,8 +56,12 @@
 <br/><br/><br/><br/>
 {% endblock %} 
 
+{% block footer %}
+	
+{% endblock %}
+
 {% block scripts %}
-           <!-- JavaScript! -->
-     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>      
+    <!-- JavaScript! -->
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>      
 {%endblock%}

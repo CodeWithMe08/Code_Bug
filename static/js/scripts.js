@@ -43,9 +43,7 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
-
 });
-
 
  
 /*animations and transitions*/
@@ -54,7 +52,7 @@ var tl = gsap.timeline();
 tl.from('.wrapper', {
     y: '-200%',
     opacity: 0,
-    duration: 0.5,
+    duration: 0.7,
     ease: Power4.easeOut
 })
 tl.from('.linky', {
@@ -72,7 +70,7 @@ gsap.from(".transition2", {
     },
     y: 100,
     opacity: 0,
-    duration: 0.5,
+    duration: 0.7,
     stagger: .3
 })
 
@@ -93,7 +91,7 @@ gsap.from(".transition4", {
     },
     y: 50,
     opacity: 0,
-    duration: 1,
+    duration: 0.7,
     stagger: .3
 })
 gsap.from(".transition5", {
@@ -103,7 +101,6 @@ gsap.from(".transition5", {
     },
     y: 100,
     opacity: 0,
-    duration: 1,
+    duration: 0.7,
     stagger: .3
 });
-

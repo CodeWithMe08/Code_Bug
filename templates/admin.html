@@ -8,24 +8,49 @@
 
 {% block content %}
 <style>
-    h3,h2,h1{
+    h3{
         font-weight: 400;
+    }
+    th{
+        font-size: large;
+        font-weight: 300;
+    }
+    
+    .serial
+    {
+        counter-reset: Serial;           /* Set the Serial counter to 0 */
+    }
+
+    table
+    {
+        border-collapse: separate;
+    }
+
+    tr td:first-child:before
+    {
+    counter-increment: Serial;      /* Increment the Serial counter */
+    content: "" counter(Serial); /* Display the counter */
     }
 </style>
 <br/> <br/><br/><br/><br/>
 
-<center><h2><u>Admin Panel</u></h2><br/>
+<center>
+    <h2 class="transition6 page-section-heading text-center text-uppercase text-dark mb-0" 
+    style="font-weight:250;text-decoration: underline solid rgb(96, 96, 96) 1px; text-underline-position: under;">
+    ADMIN PANEL</h2><br/>
 
-<h3> Post HIstory </h3></center>	
+    <h3 class="transition6"> Post HIstory </h3>
+</center>	
 <br/>
-
-<table class="transition3 table">
-    <thead class="transition3 table-dark">
-        <tr>    
-        <th scope="col">Title</th>
-        <th scope="col">Category</th>
-        <th scope="col" class="text-align-center">On</th>
-        <th scope="col">By</th>
+ <div class="table-responsive wrapper "> 
+<table class="serial transition6 table table-responsive">
+    <thead class="transition6 table-dark">
+        <tr> 
+        <th scope="col">Sno.</th>   
+        <th scope="col">Questions</th>
+        <th scope="col">Ctg</th>
+        <th scope="col">Date</th>
+        <!-- <th scope="col">By</th> -->
         <th scope="col">View</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
@@ -34,11 +59,12 @@
     <tbody>
     {% for post in posts %}
     
-    <tr class="transition3 table-light">	
+    <tr class="transition6 table-light">
+        <td></td>
 		<td>{{ post.title }}</td>
 		<td>{{ post.category }}</td>
         <td>{{ post.date_posted }}</td>	 
-        <td>{{ post.poster.name }}</td> 
+        <!-- <td>{{ post.poster.name }}</td>  -->
 	    <td><a href="{{ url_for('post', id=post.id)}}" class="btn btn-outline-success btn-sm">View</a></td>
 	    
         {% if current_user.id == 8 %}
@@ -50,15 +76,16 @@
     {% endfor %}
     <tbody>
 </table>
-
+</div> 
 
 <br/><br/><br/>
 <center><h3> Users List</h3></center>
 <br/>
-
-<table class="transition4 table">
+<div class="table-responsive "> 
+<table class="serial transition4 table">
     <thead class="transition4 table-dark">
-    <tr>    
+    <tr> 
+    <th scope="col">Sno.</th>   
     <th scope="col">Id</th>
     <th scope="col">Name</th>
     <th scope="col">Username</th>
@@ -69,8 +96,8 @@
     <tbody>
     {% for our_user in our_users %}
 	<tr class="transition4 table-light">
-        <td class="transition4 table-light">
-            {{ our_user.id }} </td>
+        <td>  </td>
+        <td> {{ our_user.id }} </td>
         <td> {{ our_user.name }}</td>
         <td> {{our_user.username }} </td>
         <td> {{ our_user.email }} </td>
@@ -79,47 +106,14 @@
     {% endfor %}
     </tbody>
 </table>
- 
+</div>
 {% endblock %}
 <br/><br/><br/><br/>
 
-{% block footer %}
-<footer class="transition5 footer text-center bg-light">
-    <div class="container ">
-        <div class="transition5 row">
-            <!-- Footer Location-->
-            <div class="col-lg-4 mb-5 mb-lg-0">
-                <h4 class="text-dark text-uppercase mb-4">Location</h4>
-                <p class="lead mb-0 text-dark">
-                    India - MAharasthra
-                    <br />
-                    Street-Not telling you..
-                </p>
-            </div>
-            <!-- Footer Social Icons-->
-            <div class="transition5 col-lg-4 mb-5 mb-lg-0">
-                <h4 class="text-uppercase text-dark mb-4">Around the Web</h4>
-                <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-                <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-                <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                <a class="btn btn-outline-dark btn-social mx-1 " href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
-            </div>
-            <!-- Footer About Text-->
-            <div class="transition5 col-lg-4">
-                <h4 class="text-uppercase text-dark mb-4">About Code_Bug</h4>
-                <p class="lead mb-0 text-dark">
-                    Code_Bug is a free programming website for learners to code and understand concepts!           
-                </p>
-            </div>
-        </div>
-    </div>
-  </footer>
- 
-{% endblock %}
 
 {% block scripts %}
            <!-- JavaScript! -->
-     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
         
 {%endblock%}

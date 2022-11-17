@@ -58,56 +58,80 @@ def index():
 @login_required
 def python():
 	# Filter all the posts from the database
-    posts = Posts.query.filter_by(category = 'python')
-    return render_template("posts.html", posts=posts)
+	posts = Posts.query.filter_by(category = 'python')
+	for post in posts:	 
+		cont = post.content[0:500]
+	return render_template("posts.html", posts=posts, cont=cont)
 
 
 @app.route('/database')
 @login_required
 def database():
 	# Filter all the posts from the database
-    posts = Posts.query.filter_by(category = 'database')
-    return render_template("posts.html", posts=posts)
+	posts = Posts.query.filter_by(category = 'database')
+	for post in posts:	 
+		cont = post.content[0:500]
+	return render_template("posts.html", posts=posts, cont=cont)
 
 
-@app.route('/selenium')
+@app.route('/automation')
 @login_required
-def selenium():
+def automation():
 	# Filter all the posts from the database
-    posts = Posts.query.filter_by(category = 'selenium')
-    return render_template("posts.html", posts=posts)
+	posts = Posts.query.filter_by(category = 'automation')
+	for post in posts:	 
+		cont = post.content[0:500]
+	return render_template("posts.html", posts=posts, cont=cont)
 
 
-@app.route('/html-css')
+@app.route('/html')
 @login_required
 def html():
 	# Filter all the posts from the database
-    posts = Posts.query.filter_by(category = 'html')
-    return render_template("posts.html", posts=posts)
+	posts = Posts.query.filter_by(category = 'html')
+	for post in posts:	 
+		cont = post.content[0:500]
+	return render_template("posts.html", posts=posts, cont=cont)
 
 
-@app.route('/django')
+@app.route('/web_framework')
 @login_required
-def django():
+def web_framework():
 	# Filter all the posts from the database
-    posts = Posts.query.filter_by(category = 'django')
-    return render_template("posts.html", posts=posts)
-
-
-@app.route('/flask')
-@login_required
-def flask():
-	# Filter all the posts from the database
-    posts = Posts.query.filter_by(category = 'flask')
-    return render_template("posts.html", posts=posts)
+	posts = Posts.query.filter_by(category = 'web_framework')
+	for post in posts:	 
+		cont = post.content[0:500]
+	return render_template("posts.html", posts=posts, cont=cont)
 
 
 @app.route('/git')
 @login_required
 def git():
 	# Filter all the posts from the database
-    posts = Posts.query.filter_by(category = 'git')
-    return render_template("posts.html", posts=posts)
+	posts = Posts.query.filter_by(category = 'git')
+	for post in posts:	 
+		cont = post.content[0:500]
+	return render_template("posts.html", posts=posts, cont=cont)
+
+
+@app.route('/basic')
+@login_required
+def basic():
+	# Filter all the posts from the database
+	posts = Posts.query.filter_by(category = 'basic')
+	for post in posts:	 
+		cont = post.content[0:500]
+	return render_template("posts.html", posts=posts, cont=cont)
+
+
+@app.route('/problem_solving')
+@login_required
+def code():
+	# Filter all the posts from the database
+	posts = Posts.query.filter_by(category = 'code')
+	for post in posts:	 
+		cont = post.content[0:500]
+	return render_template("posts.html", posts=posts, cont=cont)
 
 
 # Create posts endpoint
@@ -116,7 +140,9 @@ def git():
 def posts():
 	# Grab all the posts from the database
 	posts = Posts.query.order_by(Posts.date_posted)
-	return render_template("posts.html", posts=posts)
+	for post in posts:	 
+		cont = post.content[0:500]
+	return render_template("posts.html", posts=posts, cont=cont)
 
 
 # Create post endpoint
@@ -144,7 +170,7 @@ def search():
 		# Get data from submitted form
 		post.searched = form.searched.data
 		# Query the Database
-		posts = posts.filter(Posts.content.like('%' + post.searched + '%'))
+		posts = posts.filter(Posts.title.like('%' + post.searched + '%'))
 		posts = posts.order_by(Posts.title).all()
 		return render_template("search.html",
 		 form=form,
@@ -305,7 +331,7 @@ def admin():
 def profile():
 	return render_template("profile.html")
 
-	"""use this to have update page functionalities in profile page also, will nned to have a form in profile for this to work!"""
+	"""use this to have update page functionalities in profile page also, will need to have a form in profile for this to work!"""
 	# form = UserForm()
 	# id = current_user.id
 	# name_to_update = Users.query.get_or_404(id)
@@ -364,7 +390,6 @@ def update(id):
 			pic_name = str(uuid.uuid1()) + "_" + pic_filename
 			# Save That Image
 			saver = request.files['profile_pic']
-
 
 			# Change it to a string to save to db
 			name_to_update.profile_pic = pic_name

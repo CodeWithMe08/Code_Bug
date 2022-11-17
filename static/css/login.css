@@ -54,19 +54,16 @@
   --bs-body-color: #212529;
   --bs-body-bg: #fff;
 }
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
   }
 }
-
 body {
   margin: 0;
   height: 100vh;
@@ -81,70 +78,71 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background: #f1efe9;
-
 }
-
 .form-login {
   max-width: 500px;
-  background: hsl(0, 0%, 100%);
-  border-radius: 1em;
+  background: #ffff;
+  border-radius: 10px;
+  box-shadow: 20px 20px 20px #cecfd1;
+  border-color: rgb(181, 180, 180);
   padding: 1em;
   position: relative;
   margin-top: 1em;
   display: grid;
 }
-
 .head1 {
   margin-bottom: 0.4em;
   margin-top:0.5em;
   font-size: 2em;
-  font-weight: 400;
+  font-weight: 300;
+  text-decoration: underline solid black 1px; 
+  text-underline-position: under;;
 }
-
 .custom-field,.custom-button  {
-  border-radius: 0.3em;
+  border-radius: 0.4em;
 }
-
 p {
   font-size: 0.9em;
 }
 a{
-  color: #17bedb;
+  color: #1abc9c;
 }
 .custom-label {
   display: block;
   margin-bottom: 0.3em;
   font-size: 1.3em;
-  font-weight: 350;
-  
+  font-weight: 350; 
 }
-
 .custom-field {
   width: 100%;
   padding: 0.5em;
   margin-top: 0em;
-  border: 0.5px solid gray;
+  border: 1px solid gray;
   margin-bottom: 0em;
 }
-
 .custom-button {
   display: block;
-  background: rgb(182, 21, 128);
+  background:#41d6b8;
   color: white;
   text-decoration: none;
-  padding: 1em;
+  font-size: larger;
+  padding: 0.7em;
   text-align: center;
-  border: purple;
+  border: #064033;
+}
+.custom-button:hover {
+  background: #16a588;
+  transition: ease-in-out;
+
 }
 .custom-field, .custom-button {
-  border-radius: 0.3em;
+  border-radius: 0.4em;
 }
 .onstart {
   position: absolute;
-  top: -90px;
-  left: -35px;
+  top: -20px;
+  left: 15px;
 }
-
 /* end of custom css */
 
 
