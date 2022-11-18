@@ -1,4 +1,3 @@
-from unicodedata import category
 from flask import Flask, flash, render_template,flash,request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime 
@@ -10,23 +9,39 @@ from flask_ckeditor import CKEditor
 from werkzeug.utils import secure_filename
 import uuid as uuid
 import os
+from flask_mail import Mail
+import json
+
+with open('config.json', 'r') as c:
+    params = json.load(c) ["params"]
 
 # Create a Flask Instance
 app = Flask(__name__)
 
 # Add CKEditor
 ckeditor = CKEditor(app)
+app.config['CKEDITOR_ENABLE_CODESNIPPET'] = True
+
+# setting up and intialising flask mail
+app.config.update(
+    MAIL_SERVER = 'smtp.gmail.com',
+    MAIL_PORT = '465',
+    MAIL_USE_SSL = True,
+    MAIL_USERNAME = params['gmail-user'],
+    MAIL_PASSWORD = params['gmail-password'])
+
+mail = Mail(app)
 
 # SQLite DB
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
 # MySQL DB
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/user01'
+#app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
 # postgres DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://qkxekuvvimyqpb:12dbcc3846e4ba7a5c1fa5075ffb93858da3c9ddd73b7c92b9fc7881a159df13@ec2-54-82-205-3.compute-1.amazonaws.com:5432/d7n991c1t52bl5'
+app.config['SQLALCHEMY_DATABASE_URI'] = params['postgres_uri']
 
-#'HEROKU_POSTGRESQL_COPPER_URL: postgres://jzldlnekuhbmgt:caf9e6167ea4ac83232fcb9c2b7cc6dd81c48aba2e5249e119e5f8f5cb5b3d71@ec2-44-209-57-4.compute-1.amazonaws.com:5432/d3okvj96ue674l'
+#'HEROKU_POSTGRESQL_COPPER_URL: params['postgres_copper_uri']
 
-app.config['SECRET_KEY'] = "my super secret key that no one is supposed to know"
+app.config['SECRET_KEY'] = params['secret_key']
 
 UPLOAD_FOLDER = 'static/imgs/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -49,9 +64,23 @@ def load_user(user_id):
 # Create a route decorator
 #trim
 #striptags
-@app.route('/')
+@app.route('/', methods = ['GET','POST'])
 def index():
-	return render_template("index.html")
+	if (request.method == 'POST'):
+		name = request.form.get('name')
+		email = request.form.get('email')
+		phone = request.form.get('phone')
+		message = request.form.get('message')
+
+		entry = Contacts(name = name, email = email, phone_num = phone, msg = message, date = datetime.utcnow())
+		db.session.add(entry)
+		db.session.commit()
+		mail.send_message('New message from Blog by' + name,
+						sender = email,
+						recipients = [params['gmail-user']],
+						body = message + "\n" + phone
+						)
+	return render_template("index.html", params = params)
 
 
 @app.route('/python')
@@ -59,9 +88,7 @@ def index():
 def python():
 	# Filter all the posts from the database
 	posts = Posts.query.filter_by(category = 'python')
-	for post in posts:	 
-		cont = post.content[0:500]
-	return render_template("posts.html", posts=posts, cont=cont)
+	return render_template("posts.html", posts=posts)
 
 
 @app.route('/database')
@@ -69,9 +96,7 @@ def python():
 def database():
 	# Filter all the posts from the database
 	posts = Posts.query.filter_by(category = 'database')
-	for post in posts:	 
-		cont = post.content[0:500]
-	return render_template("posts.html", posts=posts, cont=cont)
+	return render_template("posts.html", posts=posts)
 
 
 @app.route('/automation')
@@ -79,9 +104,7 @@ def database():
 def automation():
 	# Filter all the posts from the database
 	posts = Posts.query.filter_by(category = 'automation')
-	for post in posts:	 
-		cont = post.content[0:500]
-	return render_template("posts.html", posts=posts, cont=cont)
+	return render_template("posts.html", posts=posts)
 
 
 @app.route('/html')
@@ -89,9 +112,7 @@ def automation():
 def html():
 	# Filter all the posts from the database
 	posts = Posts.query.filter_by(category = 'html')
-	for post in posts:	 
-		cont = post.content[0:500]
-	return render_template("posts.html", posts=posts, cont=cont)
+	return render_template("posts.html", posts=posts)
 
 
 @app.route('/web_framework')
@@ -99,9 +120,7 @@ def html():
 def web_framework():
 	# Filter all the posts from the database
 	posts = Posts.query.filter_by(category = 'web_framework')
-	for post in posts:	 
-		cont = post.content[0:500]
-	return render_template("posts.html", posts=posts, cont=cont)
+	return render_template("posts.html", posts=posts)
 
 
 @app.route('/git')
@@ -109,9 +128,7 @@ def web_framework():
 def git():
 	# Filter all the posts from the database
 	posts = Posts.query.filter_by(category = 'git')
-	for post in posts:	 
-		cont = post.content[0:500]
-	return render_template("posts.html", posts=posts, cont=cont)
+	return render_template("posts.html", posts=posts)
 
 
 @app.route('/basic')
@@ -119,9 +136,7 @@ def git():
 def basic():
 	# Filter all the posts from the database
 	posts = Posts.query.filter_by(category = 'basic')
-	for post in posts:	 
-		cont = post.content[0:500]
-	return render_template("posts.html", posts=posts, cont=cont)
+	return render_template("posts.html", posts=posts)
 
 
 @app.route('/problem_solving')
@@ -129,9 +144,7 @@ def basic():
 def code():
 	# Filter all the posts from the database
 	posts = Posts.query.filter_by(category = 'code')
-	for post in posts:	 
-		cont = post.content[0:500]
-	return render_template("posts.html", posts=posts, cont=cont)
+	return render_template("posts.html", posts=posts)
 
 
 # Create posts endpoint
@@ -140,9 +153,7 @@ def code():
 def posts():
 	# Grab all the posts from the database
 	posts = Posts.query.order_by(Posts.date_posted)
-	for post in posts:	 
-		cont = post.content[0:500]
-	return render_template("posts.html", posts=posts, cont=cont)
+	return render_template("posts.html", posts=posts)
 
 
 # Create post endpoint
@@ -172,10 +183,7 @@ def search():
 		# Query the Database
 		posts = posts.filter(Posts.title.like('%' + post.searched + '%'))
 		posts = posts.order_by(Posts.title).all()
-		return render_template("search.html",
-		 form=form,
-		 searched = post.searched,
-		 posts = posts)
+		return render_template("search.html",form=form,searched = post.searched,posts = posts)
 
 
 # Add Post Page
@@ -215,19 +223,19 @@ def delete_post(id):
 			flash("Blog Post Was Deleted!")
 			# Grab all the posts from the database
 			posts = Posts.query.order_by(Posts.date_posted)
-			return render_template("admin.html", posts=posts)
+			return redirect(url_for('admin'))
 		except:
 			# Return an error message
 			flash("Whoops! There was a problem deleting post, try again...")
 			# Grab all the posts from the database
 			posts = Posts.query.order_by(Posts.date_posted)
-			return render_template("admin.html", posts=posts)
+			return redirect(url_for('admin'))
 	else:
 		# Return a message
 		flash("You Aren't Authorized To Delete That Post!")		
 		# Grab all the posts from the database
 		posts = Posts.query.order_by(Posts.date_posted)
-		return render_template("posts.html", posts=posts)
+		return render_template("posts.html", posts=posts,params=params)
 
 
 # Edit posts
@@ -251,11 +259,11 @@ def edit_post(id):
 		#form.author.data = post.author
 		form.category.data = post.category
 		form.content.data = post.content
-		return render_template('edit_post.html', form=form, post=post)
+		return render_template('edit_post.html', form=form, post=post,params=params)
 	else:
 		flash("You Aren't Authorized To Edit This Post...")
 		posts = Posts.query.order_by(Posts.date_posted)
-		return redirect(url_for('post', id=post.id))
+		return redirect(url_for('post', id=post.id,posts=posts))
 
 
 # Registration
@@ -278,10 +286,7 @@ def register():
 		form.password_hash.data = ''
 		flash("Registration Completed!")
 	our_users = Users.query.order_by(Users.date_added)
-	return render_template("register.html", 
-		form=form,
-		name=name,
-		our_users=our_users)
+	return render_template("register.html", form=form,name=name,our_users=our_users,params=params)
 
 
 # Login Page
@@ -319,7 +324,7 @@ def admin():
     if id == 8:
         posts = Posts.query.order_by(Posts.date_posted)
         our_users = Users.query.order_by(Users.date_added)
-        return render_template("admin.html", posts=posts, our_users=our_users)
+        return render_template("admin.html", posts=posts, our_users=our_users,params=params)
     else:
         flash("Sorry you must be the Admin to access the Admin Page...")
         return redirect(url_for('profile'))
@@ -329,7 +334,7 @@ def admin():
 @app.route('/profile', methods=['GET', 'POST'])
 @login_required
 def profile():
-	return render_template("profile.html")
+	return render_template("profile.html",params=params)
 
 	"""use this to have update page functionalities in profile page also, will need to have a form in profile for this to work!"""
 	# form = UserForm()
@@ -397,26 +402,16 @@ def update(id):
 				db.session.commit()
 				saver.save(os.path.join(app.config['UPLOAD_FOLDER'], pic_name))
 				flash("User Updated Successfully!")
-				return render_template("profile.html", 
-					form=form,
-					name_to_update = name_to_update, id=id)
+				return render_template("profile.html",form=form,name_to_update = name_to_update,id=id,params=params)
 			except:
 				flash("Error!  Looks like there was a problem...try again!")
-				return render_template("update.html", 
-					form=form,
-					name_to_update = name_to_update)
+				return render_template("update.html", form=form,name_to_update = name_to_update,params=params)
 		else:
 			db.session.commit()
 			flash("User Updated Successfully!")
-			return render_template("profile.html", 
-				form=form,
-				name_to_update = name_to_update, id=id)
-	
+			return render_template("profile.html", form=form,name_to_update = name_to_update,id=id,params=params)
 	else:
-		return render_template("update.html", 
-				form=form,
-				name_to_update = name_to_update,
-				id = id)
+		return render_template("update.html", form=form,name_to_update = name_to_update,id = id,params=params)
 
 
 # Delete user function
@@ -424,24 +419,28 @@ def update(id):
 @login_required
 def delete(id):
 	# Check logged in id vs. id to delete
-	if id == current_user.id:
+	if id == current_user.id or 8:
 		user_to_delete = Users.query.get_or_404(id)
 		name = None
 		form = UserForm()
 		try:
-			db.session.delete(user_to_delete)
-			db.session.commit()
-			flash("User Deleted Successfully!!")
-
-			our_users = Users.query.order_by(Users.date_added)
-			return render_template("register.html", 
-			form=form,
-			name=name,
-			our_users=our_users)
+			if current_user.id == 8:
+				db.session.delete(user_to_delete)
+				db.session.commit()
+				flash("User Deleted Successfully!!")
+				our_users = Users.query.order_by(Users.date_added)
+				return redirect("/admin")
+			else:
+				db.session.delete(user_to_delete)
+				db.session.commit()
+				flash("User Deleted Successfully!!")
+				our_users = Users.query.order_by(Users.date_added)
+				return render_template("register.html", 
+				form=form,name=name,our_users=our_users,params=params)
 		except:
 			flash("Whoops! There was a problem deleting user, try again...")
 			return render_template("register.html", 
-			form=form, name=name,our_users=our_users)
+			form=form, name=name, our_users=our_users, params=params)
 	else:
 		flash("Sorry, you can't delete that user! ")
 		return redirect(url_for('profile'))
@@ -486,6 +485,16 @@ def test_pw():
 		passed = passed,
 		form = form)
 
+
+# Contact Section Model
+class Contacts(db.Model):
+    sno = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    phone_num = db.Column(db.String(20), nullable=False)
+    msg = db.Column(db.String(520), nullable=False)
+    date = db.Column(db.DateTime, default = datetime.utcnow())
+
  
 # Blog Post Model
 class Posts(db.Model):
@@ -493,7 +502,7 @@ class Posts(db.Model):
 	title = db.Column(db.String(255))
 	content = db.Column(db.Text)
 	#author = db.Column(db.String(255))
-	date_posted = db.Column(db.DateTime, default=datetime.utcnow)
+	date_posted = db.Column(db.DateTime, default=datetime.utcnow())
 	category = db.Column(db.String(255), nullable=False)
 	# Foreign Key To Link Users (refer to primary key of the user)
 	poster_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -506,7 +515,7 @@ class Users(db.Model, UserMixin):
 	name = db.Column(db.String(200), nullable=False)
 	email = db.Column(db.String(120), nullable=False, unique=True)
 	about_author = db.Column(db.Text(), nullable=True)
-	date_added = db.Column(db.DateTime, default=datetime.utcnow)
+	date_added = db.Column(db.DateTime, default=datetime.utcnow())
 	profile_pic = db.Column(db.String(), nullable=True)
 	# Do some password stuff!
 	password_hash = db.Column(db.String(128))

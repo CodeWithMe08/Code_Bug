@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
-{%block css%}  
+{%block css%}
+
 <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+
 {%endblock%}
 
 {%block title%} Code_Bug ^_^ {%endblock%}
@@ -23,7 +25,12 @@
       
       <form method="POST" action="{{ url_for('search')}}" class="d-flex linky">
         {{ form.hidden_tag() }}
-        <input class="linky form-control me-2 bg-transparent mt-3 mb-3 py-2"style="font-size: 1em;border-style: initial; padding-left: inherit;" type="search" placeholder="SEARCH HERE" aria-label="Search" name="searched"/>
+        <input class="linky form-control me-2 bg-transparent mt-3 mb-3 py-2"
+        style="font-size: 1em;
+        border-style: initial;
+        padding-left: inherit;
+        text-transform:uppercase;"
+        type="search" placeholder="SEARCH HERE" aria-label="Search" name="searched"/>
       </form>
       
       <a href="#courses">
@@ -39,11 +46,10 @@
 </div>
 <br/><br/><br/><br/><br/>
 
-
 <!--Courses section-->
 <section class="page-section text-dark mb-0" style="background: linear-gradient(#ffffff,#f8f9fa);" id="courses">
   <div class="container">
-      <h2 class="transition2 page-section-heading text-center text-uppercase text-dark mb-4" style="padding:2px; font-weight:300;text-decoration: underline solid black 1.5px ; text-underline-position: under;">Courses</h2>
+      <h2 class="transition2 page-section-heading text-center text-uppercase text-dark mb-4" style="padding:2px; font-weight:300;text-decoration: underline solid #181818 1.5px ; text-underline-position: under;">Courses</h2>
       <br/><br/><br/>
   </div>
 <div class="container" >
@@ -54,16 +60,16 @@
     <a href="/automation"><img src="{{ url_for('static', filename='imgs/selenium.jpg') }}" style="width:100%" alt="..." aria-label="selenium img" /></a>
   </div>
     <div id= "col01"class="transition2 column shadow-lg">
-      <a href="/html"><img src="{{ url_for('static', filename='imgs/html.jpg') }}" style="width:100%"  alt="..." aria-label="html img" /></a>
-    <a href="/git"><img src="{{ url_for('static', filename='imgs/git.jpg') }}" style="width:100%"  alt="..." aria-label="git img" /></a>
+      <a href="/database"><img src="{{ url_for('static', filename='imgs/database1.jpg') }}" style="width:100%"  alt="..." aria-label="html img" /></a>
+    <a href="/git"><img src="{{ url_for('static', filename='imgs/git1.jpg') }}" style="width:100%"  alt="..." aria-label="git img" /></a>
   </div>
     <div id= "col01"class="transition2 column shadow-lg">
-      <a href="/web_framework"><img src="{{ url_for('static', filename='imgs/django.jpg') }}" style="width:100%"  alt="..." aria-label="django img" /></a>
-      <a href="/database"><img src="{{ url_for('static', filename='imgs/database3.jpg') }}" style="width:100%" alt="..." aria-label="database img" /></a>
+      <a href="/html"><img src="{{ url_for('static', filename='imgs/html.jpg') }}" style="width:100%"  alt="..." aria-label="django img" /></a>
+      <a href="/web_framework"><img src="{{ url_for('static', filename='imgs/web_framework5.jpg') }}" style="width:100%" alt="..." aria-label="database img" /></a>
   </div>
   <div id= "col01"class="transition2 column shadow-lg">
-  <a href="/basic"><img src="{{ url_for('static', filename='imgs/flask1.png') }}"style="width:100%"  alt="..." aria-label="flask img" /></a>
-  <a href="/problem_solving"><img src="{{ url_for('static', filename='imgs/basic.jpg') }}" style="width:100%"  alt="..." aria-label="basic img" /></a>
+  <a href="/basic"><img src="{{ url_for('static', filename='imgs/back-to-basics3.jpg') }}"style="width:100%"  alt="..." aria-label="flask img" /></a>
+  <a href="/problem_solving"><img src="{{ url_for('static', filename='imgs/code.jpg') }}" style="width:100%"  alt="..." aria-label="basic img" /></a>
   </div>
 </div>
 
@@ -71,24 +77,25 @@
 <br/><br/><br/>
 </section>
 
-
 <!-- About Section-->
 <section class="page-section text-dark mb-0"style="background: linear-gradient(#ffffff,#f8f9fa);" id="about">
   <div class="container"style="font-size: 100%;">
       <!-- About Section Heading-->
       <h2 class="transition3 page-section-heading text-center text-uppercase text-dark mb-0" 
-      style="font-weight:250;text-decoration: underline solid black 2px; text-underline-position: under;">About</h2>
+      style="font-weight:250;text-decoration: underline solid gray 1.5px; text-underline-position: under;">About</h2>
       <br/>  <br/><br/>  <br/>
       <!-- About Section Content-->
       <div class="row"style="font-size: 100%;">
-          <div class="transition3 col-lg-4 ms-auto"><p class="lead">This blog focus is to cover not only maximum questions but also materialised content for interview related questions which are not easily availiable on the internet, specially complicated questions and experience based questions and to make them availiable to you all, is the sole purpose of Code_bug!</p></div>
-          <div class="transition3 col-lg-4 me-auto"><p class="lead">All the questions are answered specifically to its question, with proper resources and easy asscessibility! Note that none of the content is defined by me, but reither referenced through paid courses, interviews, w3school, geekforgeek and from documentation of each particular courses.</p></div>
+          <div class="transition3 col-lg-4 ms-auto"><p class="lead">{{params["about_text"]}}</p></div>
+          <div class="transition3 col-lg-4 me-auto"><p class="lead">{{params["about_text_2"]}}</p></div>
       </div>
       <!-- About Section Button-->
       <div class="transition3 text-center mt-4 mb-4"style="font-size: 100%;">
-          <a class="btn btn-xl btn-outline-secondary" href="https://startbootstrap.com/theme/freelancer/">
+        <p>Want to colaborate and make changes on Code_bug through github?</p>
+        <br/>
+          <a class="btn btn-xl btn-outline-secondary" href="{{params['gh_cb_url']}}"target = "_blank">
               <i class="fa-solid fa-circle-plus fa-beat me-1"></i>
-              JOIN NOW!
+             JOIN NOW!
           </a>
       </div>
   </div>
@@ -105,7 +112,6 @@
           <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
               src="{{ url_for('static', filename='imgs/google.svg') }}" alt="..." aria-label="Google Logo" /></a>
         </div>
-        
         <div class=" col-md-2 col-sm-5" >
           <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
             src="{{ url_for('static', filename='imgs/facebook.svg') }}" alt="..." aria-label="Facebook Logo" /></a>
@@ -120,51 +126,39 @@
 
 </section>
 
-
 <!-- Contact Section-->
 <section class="page-section " id="contact">
   <div class="container">
       <!-- Contact Section Heading-->
-      <h2 class="transition4 page-section-heading text-center text-uppercase text-secondary mb-4"style="font-weight:250; text-decoration: underline solid black 2px; text-underline-position: under;">Contact Me</h2>
+      <h2 class="transition4 page-section-heading text-center text-uppercase text-secondary mb-4"style="font-weight:250; text-decoration: underline solid gray 1.5px; text-underline-position: under;">Contact Me</h2>
       <br/>  <br/>
       <!-- Contact Section Form-->
       <div class="row justify-content-center">
-          <div class="col-lg-8 col-xl-7">
-      
-              <!-- to get an API token!-->
-              <form id="contactForm"style="font-weight:250;" data-sb-form-api-token="API_TOKEN">
-                  <!-- Name input-->
+          <div class="col-lg-8 col-xl-7">      
+              <form id="contactForm"style="font-weight:250;" action="/" method= "post">
                   <div class="transition4 form-floating mb-3">
-                      <input class="form-control bg-transparent" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                      <input class="form-control bg-transparent" id="name" name="name" type="text" placeholder="Enter your name..."  required/>
                       <label for="name">Full name</label>
                   </div>
-                  <!-- Email address input-->
                   <div class="transition4 form-floating mb-3">
-                      <input class="form-control bg-transparent" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                      <label for="email">Email address</label>
-                      
+                      <input class="form-control bg-transparent" id="email" name="email" type="email" placeholder="name@example.com" required />
+                      <label for="email">Email address</label>                   
                   </div>
-                  <!-- Phone number input-->
                   <div class="transition4 form-floating mb-3">
-                      <input class="form-control bg-transparent" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                      <input class="form-control bg-transparent" id="phone" name="phone" type="tel" placeholder="(123) 456-7890" required/>
                       <label for="phone">Phone number</label>
                   </div>
-                  <!-- Message input-->
                   <div class="transition4 form-floating mb-3">
-                      <textarea class="form-control bg-transparent" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                      <textarea class="form-control bg-transparent" id="message" name="message" type="text" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
                       <label for="message">Message</label>
-                  </div>
-                
+                  </div>              
                   <div class="d-none" id="submitSuccessMessage">
                       <div class="text-center mb-3">
                           <div class="fw-bolder"><h4>Form submission successful!</h4></div>
                       </div>
-                  </div>
-                  <!-- Submit error message-->
-                  
+                  </div>                  
                   <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3"><h3>Error sending message!</h3></div></div>
-                  <!-- Submit Button-->
-                  <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
+                  <button class="btn btn-primary btn-xl " id="submitButton" type="submit">Send</button>
               </form>
           </div>
       </div>
@@ -172,11 +166,3 @@
 </section>
 
 {%endblock%}
-
-{% block scripts %}
-
-     <!-- JavaScript! -->
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>    
-    
-{% endblock %}

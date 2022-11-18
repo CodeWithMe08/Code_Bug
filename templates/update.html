@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
 
-{%block css%}  
+{%block css%}
+
 <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+
 {%endblock%}
 
 {%block title%} Code_Bug ~ Update-Profile {%endblock%}
+
+{% block content %}
+
 <style>
 	body{
 	   font-weight:300;
 	}
 </style>
-
-{% block content %}
 <br/><br/><br/><br/><br/>
   
 {% for message in get_flashed_messages() %}
@@ -25,8 +28,8 @@
 
 {% if id == current_user.id %}
 
-	<center><h2>Update Profile</h2></center>
-	<br/>
+<center><h2>Update Profile</h2></center>
+<br/>
 <div class="transition3 shadow p-3 mb-5 bg-body rounded">
 	<form action="/update/{{ name_to_update.id }}" method="POST" enctype="multipart/form-data">
 		{{ form.hidden_tag() }}
@@ -52,22 +55,20 @@
 	</form>
 </div>
 <br/><br/><br/>
-{% else %}
-<br/><br/><br/>
-<br/><br/><br/>
 
-	<center>
+{% else %}
+
+<br/><br/><br/><br/><br/><br/>
+
+<center>
 	<h2>Access Denied!</h2>
 	<p>You cannot access this user profile...</p>	
     <lottie-player src="https://lottie.host/3e2a4acf-8241-4b7b-8345-9d4db08bf6ad/ZQw3wJgLiN.json" background="transparent" speed="1" style="width: 600px; height: 450px;" loop autoplay></lottie-player>
 	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-	</center>
-{% endif %}
-<br/><br/><br/><br/>
-{% endblock %}
+</center>
 
-{% block scripts %}
-           <!-- JavaScript! -->
-     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-{%endblock%}
+{% endif %}
+
+<br/><br/><br/><br/>
+
+{% endblock %}

@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 });
 
- 
+
 /*animations and transitions*/
 gsap.registerPlugin(ScrollTrigger);
 var tl = gsap.timeline();
@@ -99,7 +99,7 @@ gsap.from(".transition5", {
         trigger: ".transition5",
         start: "center bottom"
     },
-    y: 100,
+    y: 50,
     opacity: 0,
     duration: 0.7,
     stagger: .3

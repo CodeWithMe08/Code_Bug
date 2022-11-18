@@ -7,9 +7,11 @@
 {%block title%} Code_Bug ~ SignUp {%endblock%}
 
 {% block content %}
+
 <br/><br/><br/>
 
 {% for message in get_flashed_messages() %}
+
 	<div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
 	  <center>{{ message }} 
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
@@ -20,7 +22,9 @@
     </center>
 	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
+
 {% endfor %}
+
 <br/><br/>
 <section class="transition3 vh-100" style="background-color: #eee;">
     <div class="container h-100">
@@ -99,12 +103,5 @@
 </section>
 
 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
 {% endblock %}
-
-{% block scripts %}
-
-     <!-- JavaScript! -->
-     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-        
-{%endblock%}

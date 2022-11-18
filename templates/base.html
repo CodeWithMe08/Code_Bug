@@ -1,73 +1,85 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    
-    {%block css%}{%endblock%}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-    <title>{%block title%}{%endblock%}</title>
+{%block css%}{%endblock%}
 
-  </head>
+<title>{%block title%}{%endblock%}</title>
 
+{%block snippets%}
+
+{%endblock%}
+
+</head>
 <body id="pagetop">
-  {% include 'navbar.html' %}
-  	
-    <div class="container">
-	{% block content %}
 
-	{% endblock %}
-    </div>
+{% include 'navbar.html' %}
+
+<div class="container">
+
+{% block content %}
+
+{% endblock %}
+
+</div>
     
-    
-    {% block footer %}      
-    <footer class="transition5 footer text-center bg-light">
-      <div class="container ">
-          <div class="transition5 row">
-              <!-- Footer Location-->
-              <div class="col-lg-4 mb-5 mb-lg-0">
-                  <h4 class="text-dark text-uppercase mb-4">Location</h4>
-                  <p class="lead mb-0 text-dark">
-                      India - MAharasthra
-                      <br />
-                      Street-Not telling you..
-                  </p>
-              </div>
-              <!-- Footer Social Icons-->
-              <div class="transition5 col-lg-4 mb-5 mb-lg-0">
-                  <h4 class="text-uppercase text-dark mb-4">Around the Web</h4>
-                  <a class="btn btn-outline-dark btn-social mx-1 " href="https://www.facebook.com/"target = "_blank"><i class="fab fa-fw fa-facebook-f"></i></a>
-                  <a class="btn btn-outline-dark btn-social mx-1 " href="https://www.twitter.com/"target = "_blank"><i class="fab fa-fw fa-twitter"></i></a>
-                  <a class="btn btn-outline-dark btn-social mx-1 " href="https://www.linkedin.com/"target = "_blank"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                  <a class="btn btn-outline-dark btn-social mx-1 " href="https://www.dribbble.com/"target = "_blank"><i class="fab fa-fw fa-dribbble"></i></a>
-              </div>
-              <!-- Footer About Text-->
-              <div class="transition5 col-lg-4">
-                  <h4 class="text-uppercase text-dark mb-4">About Code_Bug</h4>
-                  <p class="lead mb-0 text-dark">
-                      Code_Bug is a free programming website for interviews preparations!           
-                  </p>
-              </div>
+{% block footer %}
+
+<footer class="transition5 footer text-center bg-light">
+  <div class="container ">
+      <div class="transition5 row">
+          <!-- Footer Location-->
+          <div class="col-lg-4 mb-5 mb-lg-0">
+              <h4 class="text-dark text-uppercase mb-4">Location</h4>
+              <p class="lead mb-0 text-dark">
+                  {{params["location"]}}
+                  <br />
+                  {{params["street"]}}
+              </p>
+          </div>
+          <!-- Footer Social Icons-->
+          <div class="transition5 col-lg-4 mb-5 mb-lg-0">
+              <h4 class="text-uppercase text-dark mb-4">Around the Web</h4>
+              <a class="btn btn-outline-dark btn-social mx-1 " href="{{params['fb_url']}}"target = "_blank"><i class="fab fa-fw fa-facebook-f"></i></a>
+              <a class="btn btn-outline-dark btn-social mx-1 " href="{{params['tw_url']}}"target = "_blank"><i class="fab fa-fw fa-twitter"></i></a>
+              <a class="btn btn-outline-dark btn-social mx-1 " href="{{params['li_url']}}"target = "_blank"><i class="fab fa-fw fa-linkedin-in"></i></a>
+              <a class="btn btn-outline-dark btn-social mx-1 " href="{{params['gh_url']}}"target = "_blank"><i class="fab fa-fw fa-github"></i></a>
+          </div>
+          <!-- Footer About Text-->
+          <div class="transition5 col-lg-4">
+              <h4 class="text-uppercase text-dark mb-4">About Code_Bug</h4>
+              <p class="lead mb-0 text-dark">
+                {{params["description"]}}        
+              </p>
           </div>
       </div>
-    </footer>
-    {% endblock %}
+  </div>
+</footer>
 
-    <!-- Copyright Section-->
-    <div class="transition5 card-footer copyright py-4 text-center text-white bg-dark">
-      <div class="container"><small>Copyright &copy; Code_Bug 2022-2023</small>
-      </div>
-    </div>
-    
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js" integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    {% block scripts %}
-    
-    {% endblock %}
-    
-  
-  </body>
+{% endblock %}
+
+<!-- Copyright Section-->
+<div class="transition5 card-footer copyright py-4 text-center text-white bg-dark">
+  <div class="container"><small>Copyright &copy; Code_Bug 2022-2023</small></div>
+</div>
+
+{% block scripts %}
+
+<!--ScrollTrigger cdn-->
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
+<!--gsap animations cdn-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js" integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--scripts.js file-->
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+<!--bootstrap cdn-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+{% endblock %}
+
+</body>
 </html>
 

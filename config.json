@@ -1,0 +1,23 @@
+{
+    "params":
+    {
+        "gmail-user": "raunakvarma05@gmail.com",
+        "gmail-password":"lootadcrpscicuie",
+        "postgres_uri": "postgresql://qkxekuvvimyqpb:12dbcc3846e4ba7a5c1fa5075ffb93858da3c9ddd73b7c92b9fc7881a159df13@ec2-54-82-205-3.compute-1.amazonaws.com:5432/d7n991c1t52bl5",
+        "sqlite_uri": "sqlite:///users.db",
+        "mysql_uri":"mysql://root:@localhost/user01",
+        "postgres_copper_uri":"postgres://jzldlnekuhbmgt:caf9e6167ea4ac83232fcb9c2b7cc6dd81c48aba2e5249e119e5f8f5cb5b3d71@ec2-44-209-57-4.compute-1.amazonaws.com:5432/d3okvj96ue674l'",
+        "secret_key":"my super secret key that no one is supposed to know",
+        "fb_url":"https://facebook.com/",
+        "tw_url":"https://twitter.com/",
+        "li_url":"https://linkedin.com/",
+        "gh_url":"https://github.com/CodeWithMe08",
+        "gh_cb_url":"https://github.com/CodeWithMe08/Code_Bug",
+        "site_name":"Code_bug",
+        "about_text":"Here, at Code_bug you'll cover not only maximum questions but also specialised and materialised content for interview related questions which are not easily availiable on internet, specially complex and experience based questions.To bring such questions to light is the sole purpose of Code_bug!",
+        "about_text_2":"All the questions are answered specifically to its context, with proper references and easy asscessibility! Note that none of the content is defined by me, but rather referenced through paid courses, interviews, w3school, geekforgeek and from official documentation of each particular courses.",
+        "location":"India - MAharasthra",
+        "street":"Street-Not telling you..",
+        "description":"Code_Bug is a free programming website for interview Q and A preparations!"
+    }
+}

@@ -7,6 +7,7 @@
 {%block title%} Code_Bug ~ Login {%endblock%}
 
 {% block content %}
+
 <br/><br/><br/><br/><br/>
 
 {% for message in get_flashed_messages() %}    
@@ -22,9 +23,7 @@
 		<div class="onstart">
 			<lottie-player src="https://lottie.host/14e0d970-baea-4eb4-a322-b2b7ecb2d7b0/LcqmekqzOF.json"  background="transparent"  speed="0.2"  style="width: 170px; height: 140px;" loop  autoplay></lottie-player>
         </div>
-		<center><h3 class="head1">
-			Login!</h3>
-		</center>
+		<center><h3 class="head1">Login!</h3></center>
 
 		{{ form.hidden_tag() }}
 
@@ -33,13 +32,11 @@
 
 		{{ form.password.label(class="custom-label") }}
 		{{ form.password(class="custom-field") }}
-		<br/>
-		
+		<br/>		
 		<!-- <div class="form-check">
 			<input type="checkbox" class="form-check-input" id="anime" name="hobby" />
 			<label class="form-check-label" for="anime">Remember me</label>
 		  </div> -->
-
 		{{ form.submit(class="custom-button") }}
 		<br/>
 
@@ -68,9 +65,3 @@
 {% block footer %}
 	
 {% endblock %}
-
-{% block scripts %}
-    <!-- JavaScript! -->
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-{%endblock%}

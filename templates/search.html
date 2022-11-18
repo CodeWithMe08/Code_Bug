@@ -1,30 +1,35 @@
 {% extends 'base.html' %}
 
-{%block css%}  
+{%block css%}
+
 <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+
 {%endblock%}
 
 {%block title%} Code_Bug ~ Searched {%endblock%}
-<style>
- body{
-    font-weight:300;
- }
-</style>
 
 {% block content %}
 
+<style>
+    body{
+       font-weight:300;
+    }
+</style>
 <br/><br/><br/><br/><br/>
 <h4 style="font-weight: 300;">You Searched For - {{ searched }} </h4><br/>
 
 {% if posts %}
+
     {% for post in posts %}
+
     <div class="shadow p-3 mb-2 bg-body rounded">
-    <h4 style="font-weight: 300;"> {{ post.title }}</h4>
+    <h5 style="font-weight: lighter;"> {{ post.title }}</h5>
 
     <small> {{ post.category }} | {{ post.date_posted }}</small>
     <br /><br />
-    <p>{{ post.content[0:500]|safe }}</p>
-    <br />
+    
+    <normal style="font-weight:350; font-size:16px; color:#11111">{{ post.content[0:500]|safe }}</normal>
+    <br /><br />
 
     <a href="{{ url_for('post', id=post.id)}}" class="btn btn-outline-secondary btn-sm">View Post</a>
 
@@ -33,11 +38,15 @@
     <a href="{{ url_for('edit_post', id=post.id)}}" class="btn btn-outline-secondary btn-sm">Edit Post</a>
 
     {% endif %}
+
     <br /><br />
     </div>
     <br />
+
     {% endfor %}
+
 {% else %}
+
     Your search -  <strong>{{ searched }}</strong> - did not match any documents.
     <br/><br/>
     Suggestions:
@@ -53,15 +62,11 @@
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 {% endif %}
+
 <br/><br/><br/><br/>
+
 {% endblock %} 
 
 {% block footer %}
 	
 {% endblock %}
-
-{% block scripts %}
-    <!-- JavaScript! -->
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>      
-{%endblock%}
