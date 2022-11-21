@@ -139,7 +139,7 @@ def basic():
 	return render_template("posts.html", posts=posts)
 
 
-@app.route('/problem_solving')
+@app.route('/code')
 @login_required
 def code():
 	# Filter all the posts from the database
