@@ -1,0 +1,3 @@
+# Code_Bug
+Currently in use, you can visit at https://codebug808.herokuapp.com/ to have a look :)
+Code_Bug is a programming based interview Q and A site, which focuses on mainly python as core language and other programming languages such as Database,Git,selenium,web_frameworks and on frontend side HTML,CSS,etc...
