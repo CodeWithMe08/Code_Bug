@@ -72,7 +72,7 @@ def index():
 		phone = request.form.get('phone')
 		message = request.form.get('message')
 
-		entry = Contacts(name = name, email = email, phone_num = phone, msg = message, date = datetime.utcnow())
+		entry = Contacts(name = name, email = email, phone_num = phone, msg = message, date = datetime.now())
 		db.session.add(entry)
 		db.session.commit()
 		mail.send_message('New message from Blog by' + name,
@@ -144,6 +144,14 @@ def basic():
 def code():
 	# Filter all the posts from the database
 	posts = Posts.query.filter_by(category = 'code')
+	return render_template("posts.html", posts=posts)
+
+
+@app.route('/project')
+@login_required
+def project():
+	# Filter all the posts from the database
+	posts = Posts.query.filter_by(category = 'project')
 	return render_template("posts.html", posts=posts)
 
 
@@ -493,7 +501,7 @@ class Contacts(db.Model):
     email = db.Column(db.String(120), nullable=False)
     phone_num = db.Column(db.String(20), nullable=False)
     msg = db.Column(db.String(520), nullable=False)
-    date = db.Column(db.DateTime, default = datetime.utcnow())
+    date = db.Column(db.DateTime, default = datetime.now())
 
  
 # Blog Post Model
@@ -502,7 +510,7 @@ class Posts(db.Model):
 	title = db.Column(db.String(255))
 	content = db.Column(db.Text)
 	#author = db.Column(db.String(255))
-	date_posted = db.Column(db.DateTime, default=datetime.utcnow())
+	date_posted = db.Column(db.DateTime, default=datetime.now())
 	category = db.Column(db.String(255), nullable=False)
 	# Foreign Key To Link Users (refer to primary key of the user)
 	poster_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -515,7 +523,7 @@ class Users(db.Model, UserMixin):
 	name = db.Column(db.String(200), nullable=False)
 	email = db.Column(db.String(120), nullable=False, unique=True)
 	about_author = db.Column(db.Text(), nullable=True)
-	date_added = db.Column(db.DateTime, default=datetime.utcnow())
+	date_added = db.Column(db.DateTime, default=datetime.now())
 	profile_pic = db.Column(db.String(), nullable=True)
 	# Do some password stuff!
 	password_hash = db.Column(db.String(128))

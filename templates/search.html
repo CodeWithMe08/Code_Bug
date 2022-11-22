@@ -10,13 +10,8 @@
 
 {% block content %}
 
-<style>
-    body{
-       font-weight:300;
-    }
-</style>
 <br/><br/><br/><br/><br/><br/>
-<h4 style="font-weight: 300;">You Searched For - {{ searched }} </h4><br/>
+<h5 style="font-weight: 300;">You searched for - {{ searched }} </h5><br/>
 
 {% if posts %}
 
@@ -26,11 +21,10 @@
     <h5 style="font-weight: lighter;"> {{ post.title }}</h5>
 
     <small> {{ post.category }} | {{ post.date_posted }}</small>
-    <br /><br />
+    <br/><br/>
     
-    <normal style="font-weight:350; font-size:16px; color:#11111">{{ post.content[0:500]|safe }}</normal>
-    <br /><br />
-
+    <normal style="font-weight:350; font-size:16px; color:#000">{{ post.content[0:500]|safe }}</normal>
+    <div><br />
     <a href="{{ url_for('post', id=post.id)}}" class="btn btn-outline-secondary btn-sm">View Post</a>
 
     {% if current_user.id ==8 %}
@@ -39,31 +33,30 @@
 
     {% endif %}
 
-    <br /><br />
+    <br/><br/>
     </div>
-    <br />
+    </div>
+    <br/>
 
     {% endfor %}
 
 {% else %}
 
-    Your search -  <strong>{{ searched }}</strong> - did not match any documents.
-    <br/><br/>
-    Suggestions:
-    </br>
+    Your search -  <strong>{{ searched }}</strong> - did not match any documents.<br/><br/>
+    Suggestions:</br>
     * Make sure that all words are spelled correctly.</br>
     * Try more general keywords.</br>
     * Try different keywords.</br>
     * Try fewer keywords.
 
     <center>
-    <lottie-player src="https://assets4.lottiefiles.com/private_files/lf30_k6fpeaa5.json"  background="transparent"  speed="1"  style="width: 400px; height: 300px;" hover loop  autoplay></lottie-player>
+    <lottie-player src="https://assets4.lottiefiles.com/private_files/lf30_k6fpeaa5.json"  background="transparent"  speed="1"  style="width: 400px; height: 300px;"  loop  autoplay></lottie-player>
     </center>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 {% endif %}
 
-<br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/>
 
 {% endblock %} 
 
