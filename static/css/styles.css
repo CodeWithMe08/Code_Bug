@@ -76,9 +76,346 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background: #f1efe9;
+  background: floralwhite;
+  /* #f1efe9 */
 }
 
+/* home page hero section custom css */
+
+.wrapper {
+  width: 1000px;
+  margin: 0 auto;
+  line-height: normal;
+}
+.sectionsect {
+  background: floralwhite;
+  height: 250px auto;
+  margin-top: 12em;
+  padding: 0.5em;
+  margin-left: 7em;
+  display: grid;
+  grid-template-areas:
+    "poster1 header header"
+    "poster1 poster2 content"
+    "poster3 poster2 content";
+  gap: 1em;
+  grid-template-columns: repeat(2, 1fr) 2fr;
+  grid-template-rows: auto 1fr 80px;
+  position: relative;
+}
+.sectionsect:before {
+  position: absolute;
+  content: "VENV";
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  z-index: -1;
+  font-size: 15rem;
+  top: -150px;
+  left: -295px;
+}
+.head1 {
+  font-size: 5rem;
+  font-weight: 200;
+  margin: 0;
+  line-height: 1em;
+  font-family: "Montserrat", sans-serif;
+}
+.poster1 {
+  grid-area: poster1;
+}
+.head1 {
+  font-family: "Montserrat", sans-serif;
+  grid-area: header;
+}
+.poster2 {
+  grid-area: poster2;
+}
+.content1 {
+  grid-area: content;
+}
+.poster3 {
+  grid-area: poster3;
+}
+#poster1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+#poster2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+#poster3 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+.linky {
+  text-decoration: none;
+  font-size: 2.2rem;
+  color: black;
+  align-items: center;
+  gap: 1em;
+  font-family: "Montserrat", sans-serif;
+}
+.content1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media screen and (max-width: 1080px) {
+  .sectionsect {
+    background: floralwhite;
+    height: 250px auto;
+    margin-top: 12em;
+    padding: 0.5em;
+    display: grid;
+    width:fit-content;
+    gap: 1em;
+    grid-template-columns: repeat(2, 1fr) 2fr;
+    grid-template-rows: auto 1fr 100px;
+    position: relative;
+  }
+  .wrapper {
+    width: 500px;
+    margin: 0 auto;
+    line-height: normal;
+  }
+  .sectionsect:after {
+    position: absolute;
+    content: "From . import .";
+    font-weight: 400;
+    font-family: "Montserrat", sans-serif;
+    z-index: auto;
+    font-size: 10rem;
+    top: 80px;
+    right:300px;
+    color: rgba(119, 136, 153, 0.153);
+    rotate: 90deg;
+  }
+  #poster1 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    display: none;
+  }
+  #poster3 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    display: none;
+  }
+}
+@media screen and (max-width: 535px) {
+  .sectionsect {
+    background: floralwhite;
+    height: 250px auto;
+    margin-top: 12em;
+    padding: 0.5em;
+    display: grid;
+    width: min-content;
+    gap: 1em;
+    grid-template-columns: repeat(2, 1fr) 2fr;
+    grid-template-rows: auto 1fr 80px;
+    position: relative;
+    right: 80px;
+  }
+  .wrapper {
+    width: auto;
+    margin: 0 auto;
+    line-height: normal;
+  }
+  .sectionsect:before {
+    position: absolute;
+    content: "VENV";
+    font-weight: 400;
+    font-family: "Montserrat", sans-serif;
+    z-index: auto;
+    font-size: 15rem;
+    top: 0px;
+    left: px;
+    /* right: -253px; */
+    color: rgba(119, 136, 153, 0.153);
+    rotate: 90deg;
+  }
+  .head1 {
+    font-size: 3rem;
+    font-weight: 500;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    color: rgb(90, 90, 90);
+    text-shadow: #000;
+  }
+  .content1 {
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    align-items: self-start;
+  }
+  .linky {
+    text-decoration: none;
+    color: black;
+    align-items: center;
+    gap: 0.5em;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+  }
+}
+/*  ends */
+
+/* home page courses section */
+
+#row01 {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+#row01 {
+  box-sizing: border-box;
+}
+/* Create four equal columns that sits next to each other */
+#col01 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding:0 4px;
+}
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+  padding: 3px;
+}
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  #col01 {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  #col01 {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+/* ends */
+
+
+/* login page custom css */
+.form-login {
+  max-width: 500px;
+  background: #ffff;
+  border-radius: 10px;
+  box-shadow: 20px 20px 20px #cecfd1;
+  border-color: rgb(181, 180, 180);
+  padding: 1em;
+  position: relative;
+  margin-top: 1em;
+  display: grid;
+}
+.head01 {
+  margin-bottom: 0.4em;
+  margin-top:0.5em;
+  font-size: 2em;
+  font-weight: 300;
+  text-decoration: underline solid black 1px; 
+  text-underline-position: under;;
+}
+.custom-field,.custom-button  {
+  border-radius: 0.4em;
+}
+p {
+  font-size: 0.9em;
+}
+a{
+  color: #1abc9c;
+}
+.custom-label {
+  display: block;
+  margin-bottom: 0.3em;
+  font-size: 1.3em;
+  font-weight: 350; 
+}
+.custom-field {
+  width: 100%;
+  padding: 0.5em;
+  margin-top: 0em;
+  border: 1px solid gray;
+  margin-bottom: 0em;
+}
+.custom-button {
+  display: block;
+  background:#41d6b8;
+  color: white;
+  text-decoration: none;
+  font-size: larger;
+  padding: 0.7em;
+  text-align: center;
+  border: #064033;
+}
+.custom-button:hover {
+  background: #16a588;
+  transition: ease-in-out;
+}
+.custom-field, .custom-button {
+  border-radius: 0.4em;
+}
+.onstart {
+  position: absolute;
+  top: -20px;
+  left: 15px;
+}
+/* end of login custom css */
+
+/* ck editor snippet */
+img  {
+  max-width: 100%;
+  height: auto;
+}
+
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+  color:orange;
+  background:cornsilk;
+  border-radius: 1em;
+}	
+/* end */
+
+/* scroll bar */
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 100vw;
+  margin-block: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#ddd6f3 , #faaca8);
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(#ed4264 , #ffedbc);
+}
+/* scroll bar ends */
+
+/* common bootstrap css */
 hr {
   margin: 1rem 0;
   color: inherit;

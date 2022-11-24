@@ -37,8 +37,6 @@ h6{
 
 {% if current_user.is_authenticated %}
 
-<br/><br/><br/><br/>
-
 {% for message in get_flashed_messages() %}
 	<div class="alert alert-warning alert-dismissible fade show" role="alert">
 	{{ message }}
@@ -46,7 +44,7 @@ h6{
 	</div>
 {% endfor %}
 
-<br/><br/>
+<br/>
 
 {% if current_user.id == 8 %}
  
@@ -103,8 +101,6 @@ Well, if you are up for the deal, <a href="/#contact">Contact me here...</a>
 {% endif %}
 
 {% else %}
-
-<br/><br/><br/><br/><br/><br/>
 
 <h4>You must be logged-in and have admin permisions to access this page!</h4>
 <a href="{{ url_for('login') }}"><h6>Login Here</h6></a>

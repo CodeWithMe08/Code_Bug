@@ -1,16 +1,17 @@
 from flask import Flask, flash, render_template,flash,request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime 
-from flask_migrate import Migrate
-from werkzeug.security import generate_password_hash, check_password_hash 
-from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
-from web_forms import UserForm,PostForm,LoginForm,PasswordForm,SearchForm
-from flask_ckeditor import CKEditor
-from werkzeug.utils import secure_filename
-import uuid as uuid
-import os
 from flask_mail import Mail
+from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
+from flask_migrate import Migrate
+from flask_ckeditor import CKEditor
+from werkzeug.security import generate_password_hash, check_password_hash 
+from werkzeug.utils import secure_filename
+from datetime import datetime 
+import uuid as uuid
+from web_forms import UserForm,PostForm,LoginForm,PasswordForm,SearchForm
 import json
+import os
+import math
 
 with open('config.json', 'r') as c:
     params = json.load(c) ["params"]
@@ -43,13 +44,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = params['postgres_uri']
 
 app.config['SECRET_KEY'] = params['secret_key']
 
-UPLOAD_FOLDER = 'static/imgs/'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-
 # Initialize The Database
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+
+# Profile pic upload directory
+UPLOAD_FOLDER = 'static/imgs/'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Flask_Login Stuff
 login_manager = LoginManager()
@@ -59,7 +60,6 @@ login_manager.login_view = 'login'
 @login_manager.user_loader
 def load_user(user_id):
 	return Users.query.get(int(user_id))
-
 
 # Create a route decorator
 #trim
@@ -87,8 +87,24 @@ def index():
 @login_required
 def python():
 	# Filter all the posts from the database
-	posts = Posts.query.filter_by(category = 'python')
-	return render_template("posts.html", posts=posts)
+	posts = Posts.query.filter_by(category = 'python').all()
+
+	last = math.ceil(len(posts)/int(params['no_of_posts']))
+	page = request.args.get('page')
+	if (not str(page).isnumeric()):
+		page = 1
+	page = int(page)
+	posts = posts[(page-1)*int(params['no_of_posts']):(page-1)*int(params['no_of_posts'])+ int(params['no_of_posts'])]
+	if page == 1:
+		prev = "#"
+		next = "/python?page="+ str(page+1)
+	elif page == last:
+		prev = "/python?page="+ str(page-1)
+		next = "#"
+	else:
+		prev = "/python?page="+ str(page-1)
+		next = "/python?page="+ str(page+1)
+	return render_template('posts.html', params=params, posts=posts, prev=prev, next=next)
 
 
 @app.route('/database')
@@ -143,8 +159,24 @@ def basic():
 @login_required
 def code():
 	# Filter all the posts from the database
-	posts = Posts.query.filter_by(category = 'code')
-	return render_template("posts.html", posts=posts)
+	posts = Posts.query.filter_by(category = 'code').all()
+
+	last = math.ceil(len(posts)/int(params['no_of_posts']))
+	page = request.args.get('page')
+	if (not str(page).isnumeric()):
+		page = 1
+	page = int(page)
+	posts = posts[(page-1)*int(params['no_of_posts']):(page-1)*int(params['no_of_posts'])+ int(params['no_of_posts'])]
+	if page == 1:
+		prev = "#"
+		next = "/code?page="+ str(page+1)
+	elif page == last:
+		prev = "/code?page="+ str(page-1)
+		next = "#"
+	else:
+		prev = "/code?page="+ str(page-1)
+		next = "/code?page="+ str(page+1)
+	return render_template('posts.html', params=params, posts=posts, prev=prev, next=next)
 
 
 @app.route('/project')
@@ -160,8 +192,26 @@ def project():
 @login_required
 def posts():
 	# Grab all the posts from the database
+
 	posts = Posts.query.order_by(Posts.date_posted)
-	return render_template("posts.html", posts=posts)
+	postss = Posts.query.filter_by().all()
+
+	last = math.ceil(len(postss)/int(params['no_of_posts']))
+	page = request.args.get('page')
+	if (not str(page).isnumeric()):
+		page = 1
+	page = int(page)
+	posts = posts[(page-1)*int(params['no_of_posts']):(page-1)*int(params['no_of_posts'])+ int(params['no_of_posts'])]
+	if page == 1:
+		prev = "#"
+		next = "/posts?page="+ str(page+1)
+	elif page == last:
+		prev = "/posts?page="+ str(page-1)
+		next = "#"
+	else:
+		prev = "/posts?page="+ str(page-1)
+		next = "/posts?page="+ str(page+1)
+	return render_template('posts.html', params=params, posts=posts, prev=prev, next=next)
 
 
 # Create post endpoint
@@ -344,7 +394,8 @@ def admin():
 def profile():
 	return render_template("profile.html",params=params)
 
-	"""use this to have update page functionalities in profile page also, will need to have a form in profile for this to work!"""
+	# """use this to have update page functionalities in profile page also, will need to have a form in profile for this to work!"""
+	
 	# form = UserForm()
 	# id = current_user.id
 	# name_to_update = Users.query.get_or_404(id)

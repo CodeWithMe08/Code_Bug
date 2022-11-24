@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
 
 {%block css%}  
-<link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
 {%endblock%}
 
 {%block title%} Code_Bug ~ Login {%endblock%}
 
 {% block content %}
-
-<br/><br/><br/><br/><br/>
 
 {% for message in get_flashed_messages() %}    
 	<div class="alert alert-warning alert-dismissible fade show mx-4" role="alert">
@@ -23,7 +21,7 @@
 		<div class="onstart">
 			<lottie-player src="https://lottie.host/14e0d970-baea-4eb4-a322-b2b7ecb2d7b0/LcqmekqzOF.json"  background="transparent"  speed="0.2"  style="width: 170px; height: 140px;" loop  autoplay></lottie-player>
         </div>
-		<center><h3 class="head1">Login!</h3></center>
+		<center><h3 class="head01">Login!</h3></center>
 
 		{{ form.hidden_tag() }}
 

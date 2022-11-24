@@ -21,28 +21,25 @@
 {%endblock%}
 
 {% block content %}
-
-<br/><br/><br/><br/><br/><br/>
-
-{% for message in get_flashed_messages() %}
-
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-	  {{ message }}
-	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-	</div>
-
-{% endfor %}
-
+<style>
+	.hljs-variable, .hljs-params, .hljs-class .hljs-title {
+		color: violet;
+	}
+	.hljs-string, .css .hljs-id, .hljs-subst, .haskell .hljs-type, .ruby .hljs-class .hljs-parent, .hljs-built_in, .sql .hljs-aggregate, .django .hljs-template_tag, .django .hljs-variable, .smalltalk .hljs-class, .django .hljs-filter .hljs-argument, .smalltalk .hljs-localvars, .smalltalk .hljs-array, .hljs-attr_selector, .hljs-pseudo, .hljs-addition, .hljs-stream, .hljs-envvar, .apache .hljs-tag, .apache .hljs-cbracket, .tex .hljs-command, .hljs-prompt, .hljs-link_label, .hljs-link_url {
+		color: brown;
+	}
+</style>
+<br/>
+<div>
+	<a class="btn btn-primary float-start"style="outline:none;" href="{{prev}}">&larr; Previous</a>
+	<a class="btn btn-primary float-end" href="{{next}}">Next &rarr;</a>
+</div>
+<br/><br/><br/><br/>
 {% for post in posts %}
   <div class="shadow p-4 mb-5 bg-body rounded">
 	<div>
 	<h2 ><a style="text-decoration: none;font-size:1.4rem; font-weight:300;"href="{{ url_for('post', id=post.id)}}">{{ post.title }}</a></h2>
-	<small style="font-weight:300; 
-	font-family: 'Basetica Light',sans-serif;
-	font-size: 12px;
-	letter-spacing: 0.48px;
-	line-height: 16px;
-	color: rgb(104, 104, 104);">
+	<small style="font-weight:300; font-family: 'Basetica Light',sans-serif;font-size: 12px;letter-spacing: 0.48px;line-height: 16px;color: rgb(104, 104, 104);">
 	<!-- By: {{ post.poster.name }}<br/> -->
 	 {{ post.category }} |
 	 {{ post.date_posted }}
@@ -81,8 +78,15 @@
  
 {% endfor %}
 
-<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/>
+<!-- Pager-->
 
+<div>
+	<a class="btn btn-primary float-start" href="{{prev}}">&larr; Previous</a>
+	<a class="btn btn-primary float-end" href="{{next}}">Next &rarr;</a>
+</div>
+
+<br/><br/><br/><br/><br/>
 {% endblock %}
 
 {% block footer %}
