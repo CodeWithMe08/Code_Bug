@@ -26,9 +26,9 @@
 <br/><br/>
 <section class="transition3 vh-100" style="background-color: #eee;">
     <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100"style = "background: floralwhite;">
         <div class="col-lg-12 col-xl-11">
-          <div class="card text-black" style="border-radius: 10px; box-shadow: 20px 20px 40px rgb(241, 195, 255);border-color: rgb(255, 255, 255);">
+          <div class="card text-black" style="border:1px; border-radius: 10px; box-shadow: 20px 20px 20px #cecfd1;border-color: rgb(181, 180, 180);">
             <div class="card-body p-md-2">
               <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
@@ -36,35 +36,35 @@
                 <form method="POST">
                 {{ form.hidden_tag() }}
                 <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <i class="fas fa-user fa-lg me-3 fa-fw" style="padding-top:30;"></i>
                     <div class="form-outline flex-fill mb-0">
                     {{ form.name.label(class="form-label") }}
                     {{ form.name(class="form-control") }}
                     </div>
                 </div>          
                 <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <i class="fas fa-user fa-lg me-3 fa-fw" style="padding-top:30;"></i>
                     <div class="form-outline flex-fill mb-0">
                     {{ form.username.label(class="form-label") }}
                     {{ form.username(class="form-control") }}
                     </div>
                 </div>	
                 <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"style="padding-top:30;"></i>
                     <div class="form-outline flex-fill mb-0">
                     {{ form.email.label(class="form-label") }}
                     {{ form.email(class="form-control") }}
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"style="padding-top:30;"></i>
                     <div class="form-outline flex-fill mb-0">       
                     {{ form.password_hash.label(class="form-label") }}
                     {{ form.password_hash(class="form-control") }}      
                     </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                    <i class="fas fa-key fa-lg me-3 fa-fw"style="padding-top:30;"></i>
                     <div class="form-outline flex-fill mb-0">        
                     {{ form.password_hash2.label(class="form-label") }}
                     {{ form.password_hash2(class="form-control") }}
