@@ -45,7 +45,6 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 });
 
-
 /*animations and transitions*/
 gsap.registerPlugin(ScrollTrigger);
 var tl = gsap.timeline();

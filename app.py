@@ -12,7 +12,9 @@ from web_forms import UserForm,PostForm,LoginForm,PasswordForm,SearchForm
 import json
 import os
 import math
+from sqlalchemy.sql import func
 
+# Configure Json
 with open('config.json', 'r') as c:
     params = json.load(c) ["params"]
 
@@ -187,13 +189,11 @@ def project():
 	return render_template("posts.html", posts=posts)
 
 
-# Create posts endpoint
 @app.route('/posts')
 @login_required
 def posts():
 	# Grab all the posts from the database
-
-	posts = Posts.query.order_by(Posts.date_posted)
+	posts = Posts.query.order_by(func.random())
 	postss = Posts.query.filter_by().all()
 
 	last = math.ceil(len(postss)/int(params['no_of_posts']))
@@ -598,4 +598,4 @@ class Users(db.Model, UserMixin):
 
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run()
