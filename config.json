@@ -3,10 +3,9 @@
     {
         "gmail-user": "raunakvarma05@gmail.com",
         "gmail-password":"lootadcrpscicuie",
-        "postgres_uri": "postgresql://qkxekuvvimyqpb:12dbcc3846e4ba7a5c1fa5075ffb93858da3c9ddd73b7c92b9fc7881a159df13@ec2-54-82-205-3.compute-1.amazonaws.com:5432/d7n991c1t52bl5",
+        "postgres_uri": "postgresql://postgres:sm7wx98d6kbi8@localhost:5432/interview_questions",
         "sqlite_uri": "sqlite:///users.db",
         "mysql_uri":"mysql://root:@localhost/user01",
-        "postgres_copper_uri":"postgres://jzldlnekuhbmgt:caf9e6167ea4ac83232fcb9c2b7cc6dd81c48aba2e5249e119e5f8f5cb5b3d71@ec2-44-209-57-4.compute-1.amazonaws.com:5432/d3okvj96ue674l'",
         "secret_key":"my super secret key that no one is supposed to know",
         "fb_url":"https://facebook.com/",
         "tw_url":"https://twitter.com/",

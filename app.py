@@ -248,7 +248,7 @@ def search():
 @app.route('/add-post', methods=['GET', 'POST'])
 #@login_required
 def add_post():
-    #if current_user.id == 8:
+    #if current_user.id == 1:
     form = PostForm()
     if form.validate_on_submit():
         poster = current_user.id
@@ -273,7 +273,7 @@ def add_post():
 def delete_post(id):
 	post_to_delete = Posts.query.get_or_404(id)
 	id = current_user.id
-	if id == 8:
+	if id == 1:
 		try:
 			db.session.delete(post_to_delete)
 			db.session.commit()
@@ -312,7 +312,7 @@ def edit_post(id):
 		db.session.commit()
 		flash("Post Has Been Updated!")
 		return redirect(url_for('post', id=post.id))
-	if current_user.id == 8:
+	if current_user.id == 1:
 		form.title.data = post.title
 		#form.author.data = post.author
 		form.category.data = post.category
@@ -379,7 +379,7 @@ def logout():
 @login_required
 def admin():
     id = current_user.id
-    if id == 8:
+    if id == 1:
         posts = Posts.query.order_by(Posts.date_posted)
         our_users = Users.query.order_by(Users.date_added)
         return render_template("admin.html", posts=posts, our_users=our_users,params=params)
@@ -478,12 +478,12 @@ def update(id):
 @login_required
 def delete(id):
 	# Check logged in id vs. id to delete
-	if id == current_user.id or 8:
+	if id == current_user.id or 1:
 		user_to_delete = Users.query.get_or_404(id)
 		name = None
 		form = UserForm()
 		try:
-			if current_user.id == 8:
+			if current_user.id == 1:
 				db.session.delete(user_to_delete)
 				db.session.commit()
 				flash("User Deleted Successfully!!")
@@ -598,4 +598,4 @@ class Users(db.Model, UserMixin):
 
 
 if __name__=="__main__":
-    app.run()
+    app.run(debug=True)
