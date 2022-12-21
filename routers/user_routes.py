@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 import uuid as uuid
 from web_forms import UserForm
 import os
-from ititialize import app, params
+from initial import app, params
 from database import params, db
 from models import Users
 

@@ -1,7 +1,7 @@
 from flask import flash, render_template, redirect, url_for
 from flask_login import login_required, current_user
 import uuid as uuid
-from ititialize import app, params
+from initial import app, params
 from database import params
 from models import Users, Posts
 

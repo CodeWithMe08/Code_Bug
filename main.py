@@ -1,15 +1,5 @@
-from flask import Flask
-from flask_login import LoginManager
-import uuid as uuid
-from ititialize import app
-from database import params, db
-from models import Users, Posts, Contacts
-import post_routes
-import auth
-import user_routes
-import administrator
-import contact_routes
-import custom_error
+from initial import app
+from routers import post_routes, auth, user_routes, administrator, custom_error, contact_routes
 
 
 if __name__=="__main__":

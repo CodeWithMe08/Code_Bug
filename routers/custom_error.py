@@ -1,6 +1,6 @@
 from flask import render_template
 import uuid as uuid
-from ititialize import app
+from initial import app
 
 
 # Custom Error Pages

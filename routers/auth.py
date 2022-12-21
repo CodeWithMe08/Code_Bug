@@ -3,7 +3,7 @@ from flask_login import login_user, login_required,LoginManager, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash 
 import uuid as uuid
 from web_forms import UserForm,LoginForm
-from ititialize import app, params
+from initial import app, params
 from database import params, db
 from models import Users 
 

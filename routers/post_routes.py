@@ -4,9 +4,10 @@ from web_forms import PostForm, SearchForm
 import uuid as uuid
 import math
 from sqlalchemy.sql import func
-from ititialize import app, params
+# from ititialize import 
 from database import params, db
 from models import Posts
+from initial import app, params
 
 @app.route('/python')
 @login_required

@@ -2,7 +2,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import uuid as uuid
 import json
-from ititialize import app, params
+from initial import app, params
+
 
 # SQLite DB
 #app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']

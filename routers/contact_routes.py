@@ -1,7 +1,7 @@
 from flask import render_template, request
 from datetime import datetime 
 import uuid as uuid
-from ititialize import app, params, mail
+from initial import app, params, mail
 from database import params, db
 from models import Contacts
 
