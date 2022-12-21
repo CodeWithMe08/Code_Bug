@@ -2,10 +2,11 @@ from flask import Flask
 from flask_ckeditor import CKEditor
 import json
 from flask_mail import Mail
+import os
 
 
 # Create a Flask Instance
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates', static_folder="../static")
 
 
 # Configure Json
