@@ -4,10 +4,10 @@ from web_forms import PostForm, SearchForm
 import uuid as uuid
 import math
 from sqlalchemy.sql import func
-# from ititialize import 
 from database import params, db
 from models import Posts
 from initial import app, params
+
 
 @app.route('/python')
 @login_required
@@ -141,9 +141,28 @@ def posts():
 # Create post endpoint
 @app.route('/posts/<int:id>')
 @login_required
-def post(id):
+def post(id):		
+	max_id = 0
+	min_id = float('inf')
 	post = Posts.query.get_or_404(id)
-	return render_template('post.html', post=post)
+	posts = Posts.query.filter_by().all()
+		
+	for p in posts:
+		if p.id > max_id:
+			max_id = p.id
+		if p.id < min_id:
+			min_id = p.id
+	
+	if post.id == min_id:
+		prev = "#"
+		nexts = f"/posts/{int(id+1)}"
+	elif post.id == max_id:
+		prev = f"/posts/{int(id-1)}"
+		nexts = "#"
+	else:
+		prev = f"/posts/{int(id-1)}"
+		nexts = f"/posts/{int(id+1)}"
+	return render_template('post.html', params=params, post=post, prev=prev, nexts=nexts)
 
 
 # Create Search Function

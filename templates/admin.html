@@ -51,7 +51,8 @@
 <table class="serial table table-responsive">
     <thead class=" table-dark">
         <tr> 
-        <th scope="col">Sno.</th>   
+        <th scope="col">Sno.</th> 
+        <th scope="col">ID</th>
         <th scope="col">Questions</th>
         <th scope="col">Ctg</th>
         <th scope="col">Date</th>
@@ -67,6 +68,7 @@
     
     <tr class=" table-light">
         <td></td>
+        <td>{{ post.id }}</td>
 		<td>{{ post.title }}</td>
 		<td>{{ post.category }}</td>
         <td>{{ post.date_posted }}</td>	 
