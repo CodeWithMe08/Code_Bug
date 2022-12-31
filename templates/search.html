@@ -8,6 +8,19 @@
 
 {%block title%} Code_Bug ~ Searched {%endblock%}
 
+
+{%block snippets%}
+
+<!-- enabling syntax hughlight in snippet on Targeted Page-->
+<link rel="stylesheet"href="//unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/default.min.css">
+<script src="//unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+<!--Inititalize highlight.js-->
+<script>hljs.initHighlightingOnLoad();</script>
+<!--Loading theme on page-->
+{{ ckeditor.load_code_theme() }}
+
+{%endblock%}
+
 {% block content %}
 
 <h5 style="font-weight: 300;">You searched for - {{ searched }} </h5><br/>
@@ -15,26 +28,31 @@
 {% if posts %}
 
     {% for post in posts %}
-
-    <div class="shadow p-3 mb-2 bg-body rounded">
-    <h5 style="font-weight: lighter;"> {{ post.title }}</h5>
-
-    <small> {{ post.category }} | {{ post.date_posted }}</small>
+    <div class="transition3 shadow p-5 mb-5 bg-body rounded">
+        <h5 style="font-weight: 400;">{{ post.title }}</h5>
+        <!-- By: {{ post.poster.name }}<br/> -->
+        <!-- {{ post.date_posted }} -->
+        <small> {{ post.category }} | {{ post.date_posted }}</small>
+        <br/><br/>
+        <!--<h2 ><a style="text-decoration: none;font-size:1.4rem; font-weight:300;"href="{{ url_for('post', id=post.id)}}">{{ post.title }}</a></h2> -->
+        <h4 style="font-weight:300; 
+        font-family: 'Poppins', sans-serif;
+        font-size: 19px;
+        letter-spacing: 0.60px;
+        line-height: 30px;
+        color: rgb(30, 30, 30);
+        font-style: normal;">
+        {{ post.content|safe }}</h4>
+        <br/>
+        {% if  current_user.id == 1 %}	
+        <a href="{{ url_for('post', id=post.id)}}" class="btn btn-outline-dark btn-sm" >View Post</a>
+        <a href="{{ url_for('edit_post', id=post.id)}}" class="btn btn-outline-warning btn-sm">Edit Post</a>	
+        {% endif %}
+        
+      </div>
+    
     <br/><br/>
     
-    <normal style="font-weight:350; font-size:16px; color:#000">{{ post.content[0:500]|safe }}</normal>
-    <div><br />
-    <a href="{{ url_for('post', id=post.id)}}" class="btn btn-outline-secondary btn-sm">View Post</a>
-
-    {% if current_user.id ==1 %}
-
-    <a href="{{ url_for('edit_post', id=post.id)}}" class="btn btn-outline-secondary btn-sm">Edit Post</a>
-
-    {% endif %}
-
-    <br/><br/>
-    </div>
-    </div>
     <br/>
 
     {% endfor %}

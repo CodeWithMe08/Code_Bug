@@ -22,7 +22,14 @@
 
 {% block content %}
 <br/>
-
+<style>
+	.hljs-variable, .hljs-params, .hljs-class .hljs-title {
+		color: violet;
+	}
+	.hljs-string, .css .hljs-id, .hljs-subst, .haskell .hljs-type, .ruby .hljs-class .hljs-parent, .hljs-built_in, .sql .hljs-aggregate, .django .hljs-template_tag, .django .hljs-variable, .smalltalk .hljs-class, .django .hljs-filter .hljs-argument, .smalltalk .hljs-localvars, .smalltalk .hljs-array, .hljs-attr_selector, .hljs-pseudo, .hljs-addition, .hljs-stream, .hljs-envvar, .apache .hljs-tag, .apache .hljs-cbracket, .tex .hljs-command, .hljs-prompt, .hljs-link_label, .hljs-link_url {
+		color: brown;
+	}
+</style>
 {% for message in get_flashed_messages() %}
 
 	<div class="alert alert-warning alert-dismissible fade show" role="alert">
