@@ -68,7 +68,6 @@ def update(id):
 		# Check for profile pic
 		if request.files['profile_pic']:
 			name_to_update.profile_pic = request.files['profile_pic']
-
 			# Grab Image Name
 			pic_filename = secure_filename(name_to_update.profile_pic.filename)
 			# Set UUID
@@ -84,7 +83,7 @@ def update(id):
 				flash("User Updated Successfully!")
 				return render_template("profile.html",form=form,name_to_update = name_to_update,id=id,params=params)
 			except:
-				flash("Error!  Looks like there was a problem...try again!")
+				flash("Error! Looks like there was a problem...try again!")
 				return render_template("update.html", form=form,name_to_update = name_to_update,params=params)
 		else:
 			db.session.commit()

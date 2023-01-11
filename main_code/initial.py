@@ -31,5 +31,5 @@ mail = Mail(app)
 
 
 # Profile pic upload directory
-UPLOAD_FOLDER = 'static/imgs/'
+UPLOAD_FOLDER = '../static/imgs/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
