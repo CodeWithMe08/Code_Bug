@@ -30,6 +30,7 @@ def python(paths):
 	else:
 		prev = f"/posts/{paths}?page="+ str(page-1)
 		next = f"/posts/{paths}?page="+ str(page+1)
+		
 	return render_template('posts.html', params=params, posts=posts, prev=prev, next=next)
 
 
