@@ -1,105 +1,57 @@
-// Scripts
-
-
-window.addEventListener('DOMContentLoaded', event => {
-
-    // Navbar shrink function
-    var navbarShrink = function () {
-        const navbarCollapsible = document.body.querySelector('#mainNav');
-        if (!navbarCollapsible) {
-            return;
-        }
-        if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
-        } else {
-            navbarCollapsible.classList.add('navbar-shrink')
-        }
-    };
-
-    // Shrink the navbar 
-    navbarShrink();
-
-    // Shrink the navbar when page is scrolled
-    document.addEventListener('scroll', navbarShrink);
-
-    // Activate Bootstrap scrollspy on the main nav element
-    const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#mainNav',
-            offset: 72,
-        });
-    };
-
-    // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
-            }
-        });
-    });
+//Swiper slider
+var swiper = new Swiper(".bg-slider-thumbs", {
+    loop: true,
+    spaceBetween: 0,
+    slidesPerView: 0,
+});
+var swiper2 = new Swiper(".bg-slider", {
+    loop: true,
+    spaceBetween: 0,
+    thumbs: {
+        swiper: swiper,
+    },
 });
 
-/*animations and transitions*/
-gsap.registerPlugin(ScrollTrigger);
-var tl = gsap.timeline();
-tl.from('.wrapper', {
-    y: '-200%',
-    opacity: 0,
-    duration: 0.7,
-    ease: Power4.easeOut
-})
-tl.from('.linky', {
-    opacity: 0,
-    y: -50,
-    stagger: .3,
-    ease: Power4.easeOut,
-    duration: 1.3
-}, "-=1.5")
-
-gsap.from(".transition2", {
-    scrollTrigger: {
-        trigger: '.transition2',
-        start: "top bottom"
-    },
-    y: 100,
-    opacity: 0,
-    duration: 0.7,
-    stagger: .3
-})
-
-gsap.from(".transition3", {
-    scrollTrigger: {
-        trigger: ".transition3",
-        start: "top bottom"
-    },
-    y: 100,
-    opacity: 0,
-    duration: 1.1,
-    stagger: .3
-})
-gsap.from(".transition4", {
-    scrollTrigger: {
-        trigger: ".transition4",
-        start: "top center"
-    },
-    y: 50,
-    opacity: 0,
-    duration: 0.7,
-    stagger: .3
-})
-gsap.from(".transition5", {
-    scrollTrigger: {
-        trigger: ".transition5",
-        start: "center bottom"
-    },
-    y: 50,
-    opacity: 0,
-    duration: 0.7,
-    stagger: .3
+//Navigation bar effects on scroll
+window.addEventListener("scroll", function(){
+    const header = document.querySelector("header");
+    header.classList.toggle("sticky", this.window.scrollY > 0)
 });
+
+//Responsive navigation menu toggle
+const menuBtn = document.querySelector(".nav-menu-btn");
+const closeBtn = document.querySelector(".nav-close-btn");
+const navigation = document.querySelector(".navigation");
+
+menuBtn.addEventListener("click", () => {
+    navigation.classList.add("active");
+});
+
+closeBtn.addEventListener("click", () => {
+    navigation.classList.remove("active");
+});
+
+// cards for courses
+document.getElementById("cards").onmousemove = e => {
+    for(const card of document.getElementsByClassName("card")) {
+      const rect = card.getBoundingClientRect(),
+            x = e.clientX - rect.left,
+            y = e.clientY - rect.top;
+  
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
+    };
+  }
+ 
+// flat-cards for projects
+  document.getElementById("flat-cards").onmousemove = e => {
+    for(const card of document.getElementsByClassName("flat-card")) {
+      const rect = card.getBoundingClientRect(),
+            x = e.clientX - rect.left,
+            y = e.clientY - rect.top;
+  
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
+    };
+  }
+  
