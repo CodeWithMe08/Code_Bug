@@ -1,29 +1,342 @@
 {% extends 'base.html' %}
 
-{%block css%}
-
-<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
-
-{%endblock%}
-
 {%block title%} Code_Bug ^_^ {%endblock%}
 
 {% block content %}
 
-<!-- Hero section -->
-<div class="wrapper">
-  <section class="sectionsect">
-    <img id="poster1" src="{{ url_for('static', filename='imgs/study.webp') }}" class="poster1" alt="study img" />
-    <h6 class="head1">P|P |NSTALL</h6>
-    
-    <img id="poster2" src="{{ url_for('static', filename='imgs/study2.jpg') }}"  class="poster2" alt="collaborate img" />
-    <div class="content1">
-      <a class = "linky" href="{{ url_for('python')}}" >PYTHON</a>
-      <a class = "linky" href="{{ url_for('database')}}">DATABASE</a>
-      <a class = "linky" href="{{ url_for('automation')}}">AUTOMATION</a>
-      <a class = "linky" href="{{ url_for('web_framework')}}">WEB_FRAMEWORK</a>
-      
-      <form method="POST" action="{{ url_for('search')}}" class="d-flex linky">
+<section id="hero"class="home">
+  <div class="media-icons">
+    <a href="#"><i class="uil uil-facebook-f"></i></a>
+    <a href="#"><i class="uil uil-instagram"></i></a>
+    <a href="#"><i class="uil uil-twitter"></i></a>
+  </div>
+
+  <div class="swiper bg-slider">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="{{ url_for('static', filename='imgs/thisthat2.jpg') }}" alt="">
+        <div class="text-content">
+          <h2 class="title">Autumn <span>Season</span></h2>
+          <p>Hey buddy! here you will get many things. Humm like, a lot? So, what do you say let's expore shall we...
+            <br/>6 different courses
+            <br/>many projects
+            <br/>and FAQ for practice
+          </p>
+          <!-- <button class="read-btn"><i class="uil uil-arrow-right"></i></button> -->
+          <form method="POST" action="{{ url_for('search')}}">
+            {{ form.hidden_tag() }}
+          <input id="input" class="read-btn optional-styles" type="search" name="searched" placeholder="Search here" />
+          </form>
+        </div>
+      </div>
+      <div class="swiper-slide dark-layer">
+        <img src="{{ url_for('static', filename='imgs/thisthat.jpg') }}" alt="">
+        <div class="text-content">
+          <h2 class="title">Winter <span>Season</span></h2>
+          <p>Hey friend! here you will get many things. Humm like, a lot? So, what do you say let's expore shall we...
+            <br/>6 different courses
+            <br/>many projects
+            <br/>and FAQ for practice
+          </p>
+          <form method="POST" action="{{ url_for('search')}}">
+            {{ form.hidden_tag() }}
+          <input id="input" class="read-btn optional-styles" type="search" name="searched" placeholder="Search here" />
+          </form>
+        </div>
+      </div>
+      <div class="swiper-slide dark-layer">
+        <img src="{{ url_for('static', filename='imgs/thisthat3.jpg') }}" alt="">
+        <div class="text-content">
+          <h2 class="title">Summer <span>Season</span></h2>
+          <p>Hey friend! here you will get many things. Humm like, a lot? So, what do you say let's expore shall we...
+            <br/>6 different courses
+            <br/>many projects
+            <br/>and FAQ for practice
+          </p>
+          <form method="POST" action="{{ url_for('search')}}">
+            {{ form.hidden_tag() }}
+          <input id="input" class="read-btn optional-styles" type="search" name="searched" placeholder="Search here" />
+          </form>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="{{ url_for('static', filename='imgs/thisthat4.jpg') }}" alt="">
+        <div class="text-content">
+          <h2 class="title">Spring <span>Season</span></h2>
+          <p>Hey friend! here you will get many things. Humm like, a lot? So, what do you say let's expore shall we...
+            <br/>6 different courses
+            <br/>many projects
+            <br/>and FAQ for practice
+          </p>
+          <form method="POST" action="{{ url_for('search')}}">
+            {{ form.hidden_tag() }}
+          <input id="input" class="read-btn optional-styles" type="search" name="searched" placeholder="Search here" />
+          </form>     
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bg-slider-thumbs">
+    <div class="swiper-wrapper thumbs-container">
+      <img src="{{ url_for('static', filename='imgs/thisthat2.jpg') }}" class="swiper-slide" alt="">
+      <img src="{{ url_for('static', filename='imgs/thisthat.jpg') }}" class="swiper-slide" alt="">
+      <img src="{{ url_for('static', filename='imgs/thisthat3.jpg') }}" class="swiper-slide" alt="">
+      <img src="{{ url_for('static', filename='imgs/thisthat4.jpg') }}" class="swiper-slide" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <center><h1 class="page-title">Explore</h1></center>
+  </section>
+<section class="section"id="cards-section">
+  
+<div id="cards">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-image">
+          <iconify-icon icon="ion:logo-python"style="color: #4d4d4d;" width="94" height="94"></iconify-icon>
+        </div>
+        <div class="card-info-wrapper">
+          <div class="card-info">
+            <i class="uil uil-instagram"></i>
+            <div class="card-info-title">
+              <h3>  <a href="/posts/python">Python</a></h3>
+              <h4>Logic? yeah! here, logic works not memorizing...</h4>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="card">
+      <div class="card-content">
+        <div class="card-image">
+          <i class="uil-web-section"></i>
+        </div>
+        <div class="card-info-wrapper">
+          <div class="card-info">
+            <i class="uil uil-instagram"></i>
+            <div class="card-info-title">
+              <h3>  <a href="/posts/framework">Frameworks</a></h3>
+              <h4>Logic? yeah! here, logic works not memorizing...</h4>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <div class="card-image">
+          <iconify-icon icon="file-icons:test-python"style="color: #4d4d4d;" width="94" height="94"></iconify-icon>
+        </div>
+        <div class="card-info-wrapper">
+          <div class="card-info">
+            <i class="uil uil-instagram"></i>
+            <div class="card-info-title">
+              <h3>  <a href="/posts/automation">Automation</a></h3>
+              <h4>Logic? yeah! here, logic works not memorizing...</h4>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <div class="card-image">
+          <i class="uil-github"></i>
+        </div>
+        <div class="card-info-wrapper">
+          <div class="card-info">
+            <i class="uil uil-instagram"></i>
+            <div class="card-info-title">
+              <h3>  <a href="/posts/git">Git</a></h3>
+              <h4>Logic? yeah! here, logic works not memorizing...</h4>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="card">
+      <div class="card-content">
+        <div class="card-image">
+          <iconify-icon icon="material-symbols:menu-book-outline-sharp"style="color: #4d4d4d;" width="114" height="114"></iconify-icon>
+        </div>
+        <div class="card-info-wrapper">
+          <div class="card-info">
+            <i class="uil uil-instagram"></i>
+            <div class="card-info-title">
+              <h3>  <a href="/posts/basic">Basics</a></h3>
+              <h4>Logic? yeah! here, logic works not memorizing...</h4>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <div class="card-image">
+          <i class="uil-keyboard-alt"></i>
+        </div>
+        <div class="card-info-wrapper">
+          <div class="card-info">
+            <i class="uil uil-instagram"></i>
+            <div class="card-info-title">
+              <h3><a href="/posts/code">Coding Problems</a></h3>
+              <h4>Logic? yeah! here, logic works not memorizing...</h4>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </div>
+  
+</div>
+</section>
+
+<section class="section">
+<center><h1 class="page-title" style="display:block;">Projects</h1></center>
+</section>
+
+<section class="section"id="flat-cards-section"> 
+
+<div id="flat-cards">
+  <div class="flat-card">
+    <div class="card-content">
+      <div class="card-info-wrapper">
+        <div class="card-info">
+          <i class="fa-duotone fa-apartment"></i>
+          <div class="card-info-title">
+            <h3>  <a href="/code">Coding Problems</a></h3>
+              <h4>Logic? yeah! here, logic works not memorizing...</h4>
+          </div>    
+        </div>
+      </div>
+    </div>
+  </div>
+<div id="flat-cards">
+  <div class="flat-card">
+    <div class="card-content">
+      <div class="card-info-wrapper">
+        <div class="card-info">
+          <i class="fa-duotone fa-apartment"></i>
+          <div class="card-info-title">
+            <h3>  <a href="/code">Coding Problems</a></h3>
+              <h4>Logic? yeah! here, logic works not memorizing...</h4>
+          </div>    
+        </div>
+      </div>
+    </div>
+  </div>
+<div id="flat-cards">
+  <div class="flat-card">
+    <div class="card-content">
+      <div class="card-info-wrapper">
+        <div class="card-info">
+          <i class="fa-duotone fa-apartment"></i>
+          <div class="card-info-title">
+            <h3>  <a href="/post/code">Coding Problems</a></h3>
+              <h4>Logic? yeah! here, logic works not memorizing...</h4>
+          </div>    
+        </div>
+      </div>
+    </div>
+  </div>
+<div id="flat-cards">
+  <div class="flat-card">
+    <div class="card-content">
+      <div class="card-info-wrapper">
+        <div class="card-info">
+          <i class="fa-duotone fa-apartment"></i>
+          <div class="card-info-title">
+            <h3>  <a href="/code">Coding Problems</a></h3>
+              <h4>Logic? yeah! here, logic works not memorizing...</h4>
+          </div>    
+        </div>
+      </div>
+    </div>
+  </div>
+<div id="flat-cards">
+  <div class="flat-card">
+    <div class="card-content">
+      <div class="card-info-wrapper">
+        <div class="card-info">
+          <i class="fa-duotone fa-apartment"></i>
+          <div class="card-info-title">
+            <h3>  <a href="/code">Coding Problems</a></h3>
+              <h4>Logic? yeah! here, logic works not memorizing...</h4>
+          </div>    
+        </div>
+      </div>
+    </div>
+  </div>
+<div id="flat-cards">
+  <div class="flat-card">
+    <div class="card-content">
+      <div class="card-info-wrapper">
+        <div class="card-info">
+          <i class="fa-duotone fa-apartment"></i>
+          <div class="card-info-title">
+            <h3>  <a href="/code">Coding Problems</a></h3>
+              <h4>Logic? yeah! here, logic works not memorizing...</h4>
+          </div>    
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="section">
+  <div class="about-container"> 
+    <center><h1 class="page-title">About</h1></center> 
+    <main>
+      <article class="content">
+        <section class="content__descriptor">
+          <h2 class="content__title">Humm, Want to know something about codebug?</h2>
+        </section>
+        <section class="content__text-box">
+          <p class="content__text">
+            We aim to be the investors we wished we had when we started out.
+            Lightning-fast, always on your side and fundamentally helpful.
+          </p>
+          <p class="content__text">
+            Our knowledge is your knowledge. Our network is your network. Your
+            problems are our problems. We don't have all the answers, but we
+            will help you find them.
+          </p>
+        </section>
+      </article>
+    </main>
+  </div>
+</section>
+
+  <!-- <div class="login-box">
+    <h2>Login</h2>
+    <form>
+      <div class="user-box">
+        <input type="text" name="" required="">
+        <label>Username</label>
+      </div>
+      <div class="user-box">
+        <input type="password" name="" required="">
+        <label>Password</label>
+      </div>
+      <a href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Submit
+      </a>
+    </form>
+  </div> -->
+     
+      <!-- <form method="POST" action="{{ url_for('search')}}" class="d-flex linky">
         {{ form.hidden_tag() }}
         <input class="linky form-control me-2 bg-transparent mt-3 mb-3 py-2"
         style="font-size: 1em;
@@ -31,113 +344,15 @@
         padding-left: inherit;
         text-transform:uppercase;"
         type="search" placeholder="SEARCH HERE" aria-label="Search" name="searched"/>
-      </form>
+      </form> -->
       
-      <a href="#courses">
-        <p class="linky" style="text-underline-position: under ;"><span>VIEW ALL</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="56" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
-        </svg></p> 
-      </a>
-    </div>
-    <img id="poster3"src="{{ url_for('static', filename='imgs/fish.webp') }}"  class="poster3" alt="Pet Fish" />
-  </section>
-</div>
-<!--Hero section ends-->
-</div>
-<br/><br/><br/><br/><br/>
-
-<!--Courses section-->
-<section class="page-section text-dark mb-0" style="background: linear-gradient(#ffffff,#f8f9fa);" id="courses">
-  <div class="container">
-    <h2 class="transition2 page-section-heading text-center text-uppercase text-dark mb-4" style="padding:2px; font-weight:300;text-decoration: underline solid #181818 1.5px ; text-underline-position: under;">Courses</h2>
-    <br/><br/><br/>
-  </div>
-<div class="container" >
-<!-- Photo Grid -->
-<div id= "row01"class="transition2 row"style="justify-content: center;width: 100%;"> 
-  <div id= "col01"class="transition2 column shadow-lg">
-    <a href="/python"><img src="{{ url_for('static', filename='imgs/python1.jpg') }}" style="width:100%" alt="..." aria-label="python img"></a>
-    <a href="/automation"><img src="{{ url_for('static', filename='imgs/selenium.jpg') }}" style="width:100%" alt="..." aria-label="selenium img" /></a>
-  </div>
-  <div id= "col01"class="transition2 column shadow-lg">
-    <a href="/database"><img src="{{ url_for('static', filename='imgs/database1.jpg') }}" style="width:100%"  alt="..." aria-label="html img" /></a>
-    <a href="/git"><img src="{{ url_for('static', filename='imgs/git1.jpg') }}" style="width:100%"  alt="..." aria-label="git img" /></a>
-  </div>
-  <div id= "col01"class="transition2 column shadow-lg">
-    <a href="/html"><img src="{{ url_for('static', filename='imgs/html.jpg') }}" style="width:100%"  alt="..." aria-label="django img" /></a>
-    <a href="/web_framework"><img src="{{ url_for('static', filename='imgs/web_framework5.jpg') }}" style="width:100%" alt="..." aria-label="database img" /></a>
-  </div>
-  <div id= "col01"class="transition2 column shadow-lg">
-    <a href="/basic"><img src="{{ url_for('static', filename='imgs/back-to-basics3.jpg') }}"style="width:100%"  alt="..." aria-label="flask img" /></a>
-    <a href="/code"><img src="{{ url_for('static', filename='imgs/code.jpg') }}" style="width:100%"  alt="..." aria-label="basic img" /></a>
-  </div>
-</div>
-<!-- Photo Grid ends -->
-</div>
-<br/><br/><br/>
-</section>
-<!--Courses section ends-->
-
-<!-- About Section-->
-<section class="page-section text-dark mb-0"style="background: linear-gradient(#ffffff,#f8f9fa,#ffffff);" id="about">
-  <div class="container"style="font-size: 100%;">
-      <!-- About Section Heading-->
-      <h2 class="transition3 page-section-heading text-center text-uppercase text-dark mb-0" 
-      style="font-weight:250;text-decoration: underline solid gray 1.5px; text-underline-position: under;">About</h2>
-      <br/>  <br/><br/>  <br/>
-      <!-- About Section Content-->
-      <div class="row"style="font-size: 100%;">
-        <div class="transition3 col-lg-4 ms-auto"><p class="lead">{{params["about_text"]}}</p></div>
-        <div class="transition3 col-lg-4 me-auto"><p class="lead">{{params["about_text_2"]}}</p></div>
-      </div>
-      <!-- About Section Button-->
-      <div class="transition3 text-center mt-4 mb-4"style="font-size: 100%;">
-        <p class="lead">{{params["about_text_3"]}}</p>
-        <br/>
-        <a class="btn btn-xl btn-outline-secondary" href="{{params['gh_cb_url']}}"target = "_blank">
-          <i class="fa-solid fa-circle-plus fa-beat me-1"></i>
-          JOIN NOW!
-        </a>
-      </div>
-  </div>
-  <br/><br/>
-
-  <!-- Clients-->
-  <div class="py-1">
-    <div class="container">
-      <div class="transition3 row align-items-center" style="justify-content: center;">
-        <div class="col-md-3 ">
-          <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
-            src="{{ url_for('static', filename='imgs/microsoft.svg') }}" alt="..." aria-label="Microsoft Logo" /></a>
-        </div>
-        <div class="col-md-2 col-sm-5 ">
-          <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
-              src="{{ url_for('static', filename='imgs/google.svg') }}" alt="..." aria-label="Google Logo" /></a>
-        </div>
-        <div class=" col-md-2 col-sm-5" >
-          <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
-            src="{{ url_for('static', filename='imgs/facebook.svg') }}" alt="..." aria-label="Facebook Logo" /></a>
-        </div>
-        <div class="col-md-2 col-sm-1 " >
-          <a href="#!"><img class="img-fluid img-brand d-block mx-auto" 
-           src="{{ url_for('static', filename='imgs/ibm.svg') }}" alt="..." aria-label="IBM Logo" /></a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Client section ends-->
-</section>
-<!--About section ends-->
-
 <!-- Contact Section-->
-<section class="page-section transition4" id="contact" 
-style="background-image: url('static/imgs/mount.jpg');background-repeat:no-repeat; background-attachment:fixed; background-size:cover;"> 
+<!-- <section class="page-section transition4" id="contact" >
   <div class="container">
-      <!-- Contact Section Heading-->
-      <h2 class="transition4 page-section-heading text-center text-uppercase text-secondary mb-4"style="font-weight:250; text-decoration: underline solid gray 1.5px; text-underline-position: under;">Contact Me</h2>
+
+    <h2 class="transition4 page-section-heading text-center text-uppercase text-secondary mb-4"style="font-weight:250; text-decoration: underline solid gray 1.5px; text-underline-position: under;">Contact Me</h2>
       <br/>  <br/>
-      <!-- Contact Section Form-->
+
       <div class="row justify-content-center">
           <div class="col-lg-8 col-xl-7">      
               <form id="contactForm"style="font-weight:250; color:white;" action="/" method= "post">
@@ -168,7 +383,7 @@ style="background-image: url('static/imgs/mount.jpg');background-repeat:no-repea
           </div>
       </div>
   </div>
-</section>
+</section> -->
 <!--Contact section ends-->
 
 {%endblock%}

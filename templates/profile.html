@@ -1,13 +1,31 @@
 {% extends 'base.html' %}
 
-{%block css%}  
-<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+{%block css%}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+<script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+
 {%endblock%}
 
 {%block title%} Code_Bug ~ Profile {%endblock%}
 
 {% block content %}
-
+<style>
+  body{
+    background-color: #1f1e22;
+  }
+  .card {
+    background-color: #161518;
+  }
+  .col-8 {
+    color: honeydew;
+  }
+</style>
+<br/><br/><br/>
+<div class="container">
 {% for message in get_flashed_messages() %}
 
 	<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -64,5 +82,5 @@
 </div>
       
 <br/><br/>
-
+</div>
 {% endblock %}

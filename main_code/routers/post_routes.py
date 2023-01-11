@@ -9,11 +9,11 @@ from models import Posts
 from initial import app, params
 
 
-@app.route('/python')
+@app.route('/posts/<paths>')
 @login_required
-def python():
+def python(paths):
 	# Filter all the posts from the database
-	posts = Posts.query.filter_by(category = 'python').all()
+	posts = Posts.query.filter_by(category = paths).all()
 
 	last = math.ceil(len(posts)/int(params['no_of_posts']))
 	page = request.args.get('page')
@@ -23,96 +23,17 @@ def python():
 	posts = posts[(page-1)*int(params['no_of_posts']):(page-1)*int(params['no_of_posts'])+ int(params['no_of_posts'])]
 	if page == 1:
 		prev = "#"
-		next = "/python?page="+ str(page+1)
+		next = f"/post/{paths}?page="+ str(page+1)
 	elif page == last:
-		prev = "/python?page="+ str(page-1)
+		prev = f"/post/{paths}?page="+ str(page-1)
 		next = "#"
 	else:
-		prev = "/python?page="+ str(page-1)
-		next = "/python?page="+ str(page+1)
+		prev = f"/post/{paths}?page="+ str(page-1)
+		next = f"/post/{paths}?page="+ str(page+1)
 	return render_template('posts.html', params=params, posts=posts, prev=prev, next=next)
 
 
-@app.route('/database')
-@login_required
-def database():
-	# Filter all the posts from the database
-	posts = Posts.query.filter_by(category = 'database')
-	return render_template("posts.html", posts=posts)
-
-
-@app.route('/automation')
-@login_required
-def automation():
-	# Filter all the posts from the database
-	posts = Posts.query.filter_by(category = 'automation')
-	return render_template("posts.html", posts=posts)
-
-
-@app.route('/html')
-@login_required
-def html():
-	# Filter all the posts from the database
-	posts = Posts.query.filter_by(category = 'html')
-	return render_template("posts.html", posts=posts)
-
-
-@app.route('/web_framework')
-@login_required
-def web_framework():
-	# Filter all the posts from the database
-	posts = Posts.query.filter_by(category = 'framework')
-	return render_template("posts.html", posts=posts)
-
-
-@app.route('/git')
-@login_required
-def git():
-	# Filter all the posts from the database
-	posts = Posts.query.filter_by(category = 'git')
-	return render_template("posts.html", posts=posts)
-
-
-@app.route('/basic')
-@login_required
-def basic():
-	# Filter all the posts from the database
-	posts = Posts.query.filter_by(category = 'basic')
-	return render_template("posts.html", posts=posts)
-
-
-@app.route('/code')
-@login_required
-def code():
-	# Filter all the posts from the database
-	posts = Posts.query.filter_by(category = 'code').all()
-
-	last = math.ceil(len(posts)/int(params['no_of_posts']))
-	page = request.args.get('page')
-	if (not str(page).isnumeric()):
-		page = 1
-	page = int(page)
-	posts = posts[(page-1)*int(params['no_of_posts']):(page-1)*int(params['no_of_posts'])+ int(params['no_of_posts'])]
-	if page == 1:
-		prev = "#"
-		next = "/code?page="+ str(page+1)
-	elif page == last:
-		prev = "/code?page="+ str(page-1)
-		next = "#"
-	else:
-		prev = "/code?page="+ str(page-1)
-		next = "/code?page="+ str(page+1)
-	return render_template('posts.html', params=params, posts=posts, prev=prev, next=next)
-
-
-@app.route('/project')
-@login_required
-def project():
-	# Filter all the posts from the database
-	posts = Posts.query.filter_by(category = 'project')
-	return render_template("posts.html", posts=posts)
-
-
+# All posts in a random way
 @app.route('/posts')
 @login_required
 def posts():
@@ -138,7 +59,7 @@ def posts():
 	return render_template('posts.html', params=params, posts=posts, prev=prev, next=next)
 
 
-# Create post endpoint
+# post endpoint
 @app.route('/posts/<int:id>')
 @login_required
 def post(id):		
@@ -165,7 +86,7 @@ def post(id):
 	return render_template('post.html', params=params, post=post, prev=prev, nexts=nexts)
 
 
-# Create Search Function
+# Search Function
 @app.route('/search', methods=["POST"])
 @login_required
 def search():
@@ -180,7 +101,7 @@ def search():
 		return render_template("search.html",form=form,searched = post.searched,posts = posts)
 
 
-# Pass Stuff To Navbar
+# Passing Stuff To Navbar
 @app.context_processor
 def base():
 	form = SearchForm()
@@ -210,35 +131,6 @@ def add_post():
     return render_template("add_post.html", form=form)
 
 
-# Delete posts
-@app.route('/posts/delete/<int:id>')
-@login_required
-def delete_post(id):
-	post_to_delete = Posts.query.get_or_404(id)
-	id = current_user.id
-	if id == 1:
-		try:
-			db.session.delete(post_to_delete)
-			db.session.commit()
-			# Return a message
-			flash("Blog Post Was Deleted!")
-			# Grab all the posts from the database
-			posts = Posts.query.order_by(Posts.date_posted)
-			return redirect(url_for('admin'))
-		except:
-			# Return an error message
-			flash("Whoops! There was a problem deleting post, try again...")
-			# Grab all the posts from the database
-			posts = Posts.query.order_by(Posts.date_posted)
-			return redirect(url_for('admin'))
-	else:
-		# Return a message
-		flash("You Aren't Authorized To Delete That Post!")		
-		# Grab all the posts from the database
-		posts = Posts.query.order_by(Posts.date_posted)
-		return render_template("posts.html", posts=posts,params=params)
-
-
 # Edit posts
 @app.route('/posts/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -266,4 +158,32 @@ def edit_post(id):
 		posts = Posts.query.order_by(Posts.date_posted)
 		return redirect(url_for('post', id=post.id,posts=posts))
 
+
+# Delete posts
+@app.route('/posts/delete/<int:id>')
+@login_required
+def delete_post(id):
+	post_to_delete = Posts.query.get_or_404(id)
+	id = current_user.id
+	if id == 1:
+		try:
+			db.session.delete(post_to_delete)
+			db.session.commit()
+			# Return a message
+			flash("Blog Post Was Deleted!")
+			# Grab all the posts from the database
+			posts = Posts.query.order_by(Posts.date_posted)
+			return redirect(url_for('admin'))
+		except:
+			# Return an error message
+			flash("Whoops! There was a problem deleting post, try again...")
+			# Grab all the posts from the database
+			posts = Posts.query.order_by(Posts.date_posted)
+			return redirect(url_for('admin'))
+	else:
+		# Return a message
+		flash("You Aren't Authorized To Delete That Post!")		
+		# Grab all the posts from the database
+		posts = Posts.query.order_by(Posts.date_posted)
+		return render_template("posts.html", posts=posts,params=params)
 
