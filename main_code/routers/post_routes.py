@@ -23,13 +23,13 @@ def python(paths):
 	posts = posts[(page-1)*int(params['no_of_posts']):(page-1)*int(params['no_of_posts'])+ int(params['no_of_posts'])]
 	if page == 1:
 		prev = "#"
-		next = f"/post/{paths}?page="+ str(page+1)
+		next = f"/posts/{paths}?page="+ str(page+1)
 	elif page == last:
-		prev = f"/post/{paths}?page="+ str(page-1)
+		prev = f"/posts/{paths}?page="+ str(page-1)
 		next = "#"
 	else:
-		prev = f"/post/{paths}?page="+ str(page-1)
-		next = f"/post/{paths}?page="+ str(page+1)
+		prev = f"/posts/{paths}?page="+ str(page-1)
+		next = f"/posts/{paths}?page="+ str(page+1)
 	return render_template('posts.html', params=params, posts=posts, prev=prev, next=next)
 
 

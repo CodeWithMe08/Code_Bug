@@ -448,4 +448,15 @@ color: #878787;
 	background-color: red;
 	color: white;
 	text-align: center;
-    }
+  }
+  
+::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 10px;
+  background: rgb(1 2 3 / 20%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(1 2 3 / 40%);
+  border-radius: 10px;
+}
