@@ -14,12 +14,14 @@
 {%block title%} Code_Bug ~ SignUp {%endblock%}
 
 {% block content %}
-<section>
-  <br/><br/><br/><br/><br/><br/><br/>
+  
   
 <style>
+  html{
+    height: 130%;
+  }
   .login-box {
-    position: absolute;
+    position: relative;
     margin-top: 400px;
     /* top: 50%; */
     /* left: 50%; */
@@ -31,9 +33,16 @@
     box-shadow: 0 15px 25px rgb(0 0 0 / 60%);
     border-radius: 10px;
 }
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(50px, auto);
+  grid-gap: 10px;
+}
+
   </style>
 {% for message in get_flashed_messages() %}
-
+<br/><br/><br/>
 	<div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
 	  <center>{{ message }} 
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
@@ -47,7 +56,6 @@
 
 {% endfor %}
 
-<br/><br/>
 <div class="login-box">
   <h2>Register</h2>
 <form name ="form" method="POST">
@@ -65,14 +73,17 @@
             {{ form.email }}
             {{ form.email.label }}
           </div>
+         
           <div class="user-box">
             {{ form.password_hash }}
             {{ form.password_hash.label }}
           </div>
+
           <div class="user-box">
             {{ form.password_hash2 }}
             {{ form.password_hash2.label }}
           </div>
+          <br/>
           <button {{ form.submit }}>
             <span></span>
             <span></span>
@@ -81,17 +92,18 @@
             Submit
           </button>
   
-          <br/><br/>
+          <br/>
           <h4 style="color:white;">
             Already have an account?
           <a href="{{url_for('login')}}">
           <svg xmlns="http://www.w3.org/2000/svg" width="46" height="20" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
           </svg>
-          Login here</i></a></h4>
+          Login here</a></h4>
         </form>
-    </div>                
-</section>
+    </div>  
+                 
+
 
     <!-- <div class="form-check">
     <input type="checkbox" class="form-check-input" id="anime" name="hobby" />
@@ -101,5 +113,8 @@
 {% endblock %}
 
 {% block footer %}
-  
+  <!-- Copyright Section-->
+<footer class="footer copyright py-4 text-center text-white bg-dark">
+	<div class="container"><small>Copyright &copy; Code_Bug 2022-2023</small></div>
+</footer>
 {% endblock footer %}
