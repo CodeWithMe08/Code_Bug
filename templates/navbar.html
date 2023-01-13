@@ -1,15 +1,17 @@
 
 <header id="header">
   <div class="nav-bar">
-    <a href="" class="logo">Code_bug</a>
+    <a href="" class="logo">Code<iconify-icon height='25px'icon="ph:bug-droid-duotone"></iconify-icon></a>
     <div class="navigation">
       <div class="nav-items">
         <i class="uil uil-times nav-close-btn"></i>
         <a href="/"><i class="uil uil-home"></i> Home</a>
-        <a href="/#courses"><i class="uil uil-compass"></i> Courses</a>
-        <a href="/#projects"><i class="uil uil-info-circle"></i> Projects</a>
+        <a href="/#cards-section"><i class="uil uil-compass"></i> Courses</a>
+        <a href="/#flat-cards-section"><i class="uil uil-info-circle"></i> Projects</a>
+        {% if current_user.id != 1 %}
         <a href="/#about"><i class="uil uil-document-layout-left"></i> About</a>
-        <a href="{{ url_for('add_post')}}"><i class="uil uil-info-circle"></i>Post</a>
+        {% endif %}
+        <a href="{{ url_for('add_post')}}"><i class="uil uil-info-circle"></i>+Post</a>
         {% if current_user.id == 1 %}
         <a href="{{ url_for('admin')}}"><i class="uil uil-info-circle"></i> Admin</a>
         {% endif %}
@@ -33,7 +35,6 @@
         
         {% else %}
         <a href="/login"><i class="uil uil-info-circle"></i> Login</a>
-        <!-- <a class="login-trigger uil uil-envelope" href="" data-target="#login" data-toggle="modal">Login</a> -->
         <a href="/register"><i class="uil uil-info-circle"></i> Register</a>
         {% endif %}
       </div>

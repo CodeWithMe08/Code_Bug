@@ -21,7 +21,7 @@
 }
 
 /*======= Scroll bar =======*/
-::-webkit-scrollbar{
+/* ::-webkit-scrollbar{
   width: 11px;
   background: var(--scroll-bar-color);
 }
@@ -34,7 +34,7 @@
 
 ::-webkit-scrollbar-thumb:hover{
   background: var(--scroll-thumb-hover-color);
-}
+} */
 
 /*======= Main CSS =======*/
 *{
@@ -88,7 +88,7 @@ header .nav-bar{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 200px;
+  padding: 0 100px;
   transition: 0.3s ease;
 }
 
@@ -755,7 +755,7 @@ color: #878787;
 /*======= Media queries (max-width: 1100px) =======*/
 @media screen and (max-width: 1100px){
   header .nav-bar{
-    padding: 0 50px;
+    padding: 0 20px;
   }
 
   .section{
@@ -805,6 +805,12 @@ color: #878787;
   .content__text-box {
     margin-right: 0;
  }
+}
+/*======= Media queries (max-width: 850px) =======*/
+@media screen and (max-width: 850px){
+  header .nav-bar{
+    padding: 0 10px;
+  }
 }
 /*======= Media queries (max-width: 785px) =======*/
 @media screen and (max-width: 785px){

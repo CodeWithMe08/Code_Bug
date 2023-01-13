@@ -88,7 +88,7 @@ header .nav-bar{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 200px;
+  padding: 0 50px;
   transition: 0.3s ease;
 }
 
@@ -98,7 +98,7 @@ header .nav-bar{
 
 .nav-bar .logo{
   color: var(--white-color);
-  font-size: 1.8em;
+  font-size: 1.7em;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -332,7 +332,21 @@ color: #878787;
 /*======= Media queries (max-width: 1100px) =======*/
 @media screen and (max-width: 1100px){
   header .nav-bar{
-    padding: 0 50px;
+    padding: 0 20px;
+  }
+  .section{
+    padding: 25px 50px;
+  }
+  .media-icons{
+    right: 0;
+    margin-right: 50px;
+  }  
+}
+
+/*======= Media queries (max-width: 850px) =======*/
+@media screen and (max-width: 850px){
+  header .nav-bar{
+    padding: 0 10px;
   }
   .section{
     padding: 25px 50px;
