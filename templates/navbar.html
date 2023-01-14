@@ -1,10 +1,11 @@
 
 <header id="header">
   <div class="nav-bar">
-    <a href="" class="logo">Code<iconify-icon height='25px'icon="ph:bug-droid-duotone"></iconify-icon></a>
+    <a href="" class="logo">Code<iconify-icon height='25px'icon="ph:bug-droid-duotone"></iconify-icon></a>    
     <div class="navigation">
       <div class="nav-items">
         <i class="uil uil-times nav-close-btn"></i>
+          
         <a href="/"><i class="uil uil-home"></i> Home</a>
         <a href="/#cards-section"><i class="uil uil-compass"></i> Courses</a>
         <a href="/#flat-cards-section"><i class="uil uil-info-circle"></i> Projects</a>
@@ -15,7 +16,7 @@
         {% if current_user.id == 1 %}
         <a href="{{ url_for('admin')}}"><i class="uil uil-info-circle"></i> Admin</a>
         {% endif %}
-
+        
         <!-- <form method="POST" action="{{ url_for('search')}}" class="d-flex">
           {{ form.hidden_tag() }}
           <input class="form-control me-2"style="background: transparent;border-color: transparent;"type="search"
@@ -42,3 +43,4 @@
     <i class="uil uil-apps nav-menu-btn"></i>
   </div>
 </header>
+
