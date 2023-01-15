@@ -56,6 +56,13 @@
 
 <div class="container">
 
+	<form method="POST" action="{{ url_for('search')}}">
+		{{ form.hidden_tag() }}
+	<input type="search" name= "searched" placeholder="search questions"/>
+	<div class="overlay">
+	</div>
+	</form>
+	
 {% for message in get_flashed_messages() %}
 
 	<div class="alert alert-warning alert-dismissible fade show" role="alert">

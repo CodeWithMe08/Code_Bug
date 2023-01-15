@@ -50,10 +50,19 @@
 <br/><br/><br/><br/><br/>
 
 <div class="container">
-<h5 style="font-weight: 300;">You searched for - {{ searched }} </h5><br/>
-
+    
+    <form method="POST" action="{{ url_for('search')}}">
+        {{ form.hidden_tag() }}
+    <input type="search" name= "searched" placeholder="search questions"/>
+    <div class="overlay">
+    </div>
+    </form>
+    <br/><br/><br/>
+    <center>
+        <h5 style="font-weight: 300;">You searched for - {{ searched }} </h5>
+    </center>
 {% if posts %}
-
+<br/>
     {% for post in posts %}
     <div class="transition3 shadow p-5 mb-5 bg-body rounded">
         <h5 style="font-weight: 400;">{{ post.title }}</h5>

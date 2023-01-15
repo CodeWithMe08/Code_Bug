@@ -746,7 +746,7 @@ color: #878787;
 }
 .search-bar .forms-control {
   --placeholder-color: white;
-  padding: 18px 12px 18px 0;
+  padding: 18px 28px 18px 30px;
   color: white;
   background: rgba(255, 255, 255, 0.1);
   border-color: transparent;
@@ -762,16 +762,6 @@ color: #878787;
   border-color: transparent;
   border-radius: 15px;
 }
-
-/* .optional-styles {
- font-family: 'Rubik', sans-serif;
-  outline: none;
-}
-
-#input::placeholder {
-  color: rgb(17, 17, 20);
-  opacity: 0.5;
-} */
 
 /*======= Media queries (max-width: 1100px) =======*/
 @media screen and (max-width: 1100px){

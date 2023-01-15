@@ -41,7 +41,18 @@
 	pre code.hljs {
     font-size: larger;
     }
-	
+	input[type='search'] {
+		width: 75%;
+		/* top: 0.5rem; */
+		/* display: block; */
+		padding: 0.5rem;
+		background-color: #222;
+		border-color: transparent;
+		color: #fff;
+		z-index: 2;
+		transition: 0.3s;
+		position: unset;
+	}
 </style>
 
 <br/><br/><br/><br/>
@@ -67,6 +78,7 @@
 	Add Blog Post..</h1>
 </center>
 <br/>
+
 <div class="transition3 shadow p-3 mb-5 bg-body rounded ">
 	<form method="POST">
 		{{ form.hidden_tag() }}
