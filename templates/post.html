@@ -26,17 +26,10 @@
 
 {% block content %}
 <style>
-	/* .hljs-variable, .hljs-params, .hljs-class .hljs-title {
-		color: violet;
-	}
-	.hljs-string, .css .hljs-id, .hljs-subst, .haskell .hljs-type, .ruby .hljs-class .hljs-parent, .hljs-built_in, .sql .hljs-aggregate, .django .hljs-template_tag, .django .hljs-variable, .smalltalk .hljs-class, .django .hljs-filter .hljs-argument, .smalltalk .hljs-localvars, .smalltalk .hljs-array, .hljs-attr_selector, .hljs-pseudo, .hljs-addition, .hljs-stream, .hljs-envvar, .apache .hljs-tag, .apache .hljs-cbracket, .tex .hljs-command, .hljs-prompt, .hljs-link_label, .hljs-link_url {
-		color: brown;
-	} */
 	body {
 		background: #2d2d2d;
 	}
 	pre {
-		
 		color: darkgray;
 	}
 	.bg-body {
@@ -49,7 +42,6 @@
 	pre code.hljs {
     font-size: larger;
     }
-	
 </style>
 
 <br/><br/><br/>
@@ -73,7 +65,7 @@
 {% endfor %}
 
   <div class="transition3 shadow p-5 mb-5 bg-body rounded">
-	  <h5 style="font-weight: 400;">{{ post.title }}</h5>
+	<h5 style="font-weight: 400;">{{ post.title }}</h5>
     <small>
 	  <!-- By: {{ post.poster.name }}<br/> -->
 	  {{ post.date_posted }}
@@ -89,9 +81,7 @@
 	  {{ post.content|safe }}
 	</h4>
 	<br/>
-	
-<!--Adding profile pic to respective posts and about author section-->
-
+    <!--Adding profile pic to respective posts and about author section-->
 	<!--<div class="card mb-3">
 		<div class="row no-gutters">
 			<div class="col-md-2">
@@ -132,17 +122,20 @@
   
 <br/><br/>
 <!-- Pager-->
-<div>
+  <div>
 	<a class="btn btn-secondary float-start" href="{{prev}}">&larr; Previous</a>
 	<a class="btn btn-secondary float-end" href="{{nexts}}">Next &rarr;</a>
-</div>
+  </div>
 
 <br/><br/><br/><br/>
+
 </div>
+
 <!-- Copyright Section-->
 <footer class="footer copyright py-4 text-center text-white bg-dark">
-	<div class="container"><small>Copyright &copy; Code_Bug 2022-2023</small></div>
+	<div class="container"><small>Copyright &copy; Code_Bug 2023-2024</small></div>
 </footer>
+
 {% endblock %}
 
 {% block footer %}

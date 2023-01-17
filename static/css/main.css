@@ -188,7 +188,7 @@ input[type='search']:focus ~ .overlay {
 
 /* footer section */
 
-ul {
+#ul {
   margin: 0px;
   padding: 0px;
 }

@@ -83,13 +83,10 @@
         {% if  current_user.id == 1 %}	
         <a href="{{ url_for('post', id=post.id)}}" class="btn btn-outline-light btn-sm" >View Post</a>
         <a href="{{ url_for('edit_post', id=post.id)}}" class="btn btn-outline-warning btn-sm">Edit Post</a>	
-        {% endif %}
-        
-      </div>
+        {% endif %}   
+    </div>
     
-    <br/><br/>
-    
-    <br/>
+    <br/><br/><br/>
 
     {% endfor %}
 
@@ -110,11 +107,14 @@
 {% endif %}
 
 <br/><br/>
+
 </div>
+
 <!-- Copyright Section-->
 <footer class="footer copyright py-4 text-center text-white bg-dark">
 	<div class="container"><small>Copyright &copy; Code_Bug 2023-2024</small></div>
 </footer>
+
 {% endblock %} 
 
 {% block footer %}

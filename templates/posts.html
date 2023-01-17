@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-<script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
 
 {%endblock%}
 
@@ -26,33 +25,24 @@
 
 {% block content %}
 <style>
-	/* .hljs-variable, .hljs-params, .hljs-class .hljs-title {
-		color: violet;
-	}
-	.hljs-string, .css .hljs-id, .hljs-subst, .haskell .hljs-type, .ruby .hljs-class .hljs-parent, .hljs-built_in, .sql .hljs-aggregate, .django .hljs-template_tag, .django .hljs-variable, .smalltalk .hljs-class, .django .hljs-filter .hljs-argument, .smalltalk .hljs-localvars, .smalltalk .hljs-array, .hljs-attr_selector, .hljs-pseudo, .hljs-addition, .hljs-stream, .hljs-envvar, .apache .hljs-tag, .apache .hljs-cbracket, .tex .hljs-command, .hljs-prompt, .hljs-link_label, .hljs-link_url {
-		color: brown;
-	} */
 	body {
 		background: #2d2d2d;
 	}
-	pre {
-		
+	pre {		
 		color: darkgray;
 	}
 	.bg-body {
     background-color: #222222!important;
-}
-	p,h1,h2,h3,h4,h5,h6,small,li {
-		
+    }
+	p,h1,h2,h3,h4,h5,h6,small,li {	
 		color: aliceblue;
 	}
 	pre code.hljs {
     font-size: larger;
     }
-	
 	.bg-dark {
     background-color: #202021!important;
-}
+    }
 </style>
 
 <br/><br/><br/><br/><br/>
@@ -90,28 +80,28 @@
 	font-style: normal;">
     {{ post.content|safe }}</h4>
 	<br/>
-	{% if  current_user.id == 1 %}	
+	{% if current_user.id == 1 %}	
 	<a href="{{ url_for('post', id=post.id)}}" class="btn btn-outline-secondary btn-sm" >View Post</a>
 	<a href="{{ url_for('edit_post', id=post.id)}}" class="btn btn-outline-secondary btn-sm">Edit Post</a>	
 	{% endif %}
-	
-  </div>
+</div>
  
 {% endfor %}
 
 <!-- Pager-->
-
 <div>
 	<a class="btn btn-outline-secondary float-start" href="{{prev}}">&larr; Previous</a>
 	<a class="btn btn-outline-secondary float-end" href="{{next}}">Next &rarr;</a>
 </div>
+
 <br/><br/><br/>
 
 </div>
 <!-- Copyright Section-->
 <footer class="footer copyright py-4 text-center text-white bg-dark">
-	<div class="container"><small>Copyright &copy; Code_Bug 2022-2023</small></div>
+	<div class="container"><small>Copyright &copy; Code_Bug 2023-2024</small></div>
 </footer>
+
 {% endblock %}
 
 {% block footer %}
