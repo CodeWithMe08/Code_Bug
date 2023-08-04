@@ -27,21 +27,38 @@
 {% block content %}
 <style>
 	body {
-		background: #2d2d2d;
+		background:#343541;
 	}
 	pre {
 		color: darkgray;
 	}
 	.bg-body {
-		background-color: #20201f!important;
+		background-color:#444654!important;
 	}
 	p,h1,h2,h3,h4,h5,h6,small,li {
 		
 		color: aliceblue;
 	}
 	pre code.hljs {
-    font-size: larger;
+    /* font-size: larger; */
+	background: #26272d;
     }
+	/* posts styles */
+	table {
+	color: white;
+	}
+	tbody, td, tfoot, th, thead, tr {
+	/* border-color: inherit;
+	border-style: solid;
+	border-width: 0; */
+	outline: dashed;
+	}
+	tbody, td, tfoot, th, thead, tr {
+	border-color: inherit;
+	border-style: solid;
+	border-width: 0;
+	padding: 3px;
+	}
 </style>
 
 <br/><br/><br/>
@@ -116,8 +133,9 @@
     <a href="{{ url_for('admin')}}" class="btn btn-outline-success btn-sm">Back To Panel</a>
 
 {% endif %}
-
-    <a href="/{{post.category }}" class="btn btn-outline-dark btn-sm float-right">Back to {{post.category }}</a>
+	
+	<a class="btn btn-outline-light btn-sm float-right" onclick="history.back()">Back To {{post.category}}</a>
+   
   </div> 
   
 <br/><br/>

@@ -98,9 +98,9 @@ header .nav-bar{
 
 .nav-bar .logo{
   color: var(--white-color);
-  font-size: 1.7em;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-size: 1.6em;
+  font-weight: 500;
+  letter-spacing: 1px;
   text-transform: uppercase;
   text-decoration: none;
   text-shadow: var(--text-shadow);
@@ -359,7 +359,6 @@ color: #878787;
   color: rgb(17, 17, 20);
   opacity: 0.5;
 }
-
 
 /*======= Media queries (max-width: 1100px) =======*/
 @media screen and (max-width: 1100px){

@@ -291,10 +291,11 @@ header .nav-bar{
   margin-top: 36px;
 }
 .search-bar .forms-control {
-  --placeholder-color: white;
+  opacity: 0.3;
+  /* --placeholder-color: white; */
   padding: 18px 28px 18px 30px;
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
+  /* color: white; */
+  /* background: rgba(255, 255, 255, 0.1); */
   border-color: transparent;
   border-radius: 15px;
 }
